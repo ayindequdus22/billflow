@@ -26,7 +26,8 @@ class MyApp extends StatelessWidget {
           useInheritedMediaQuery: true,
           theme: AppTheme.lightMode(context),
           darkTheme: AppTheme.darkMode(context),
-          initialRoute: "/onboarding",
+          // initialRoute: "/",
+          initialRoute: "/auth/login",
           onGenerateRoute: OnGenerateRoute.generateRoute,
         );
       },

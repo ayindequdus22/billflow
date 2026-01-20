@@ -75,15 +75,16 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
     ];
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         actions: [
           TextButton(
-            onPressed: () => Get.toNamed("/login"),
+            onPressed: () => Get.offNamed("/auth/login"),
             child: Text("Skip"),
           ),
         ],
       ),
       body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 10.w),
+        padding: EdgeInsets.symmetric(horizontal: 10.r),
         child: Column(
           children: [
             SizedBox(
@@ -173,7 +174,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                     );
                   } else {
                     // Navigate
-                    Get.toNamed("/login");
+                    Get.offNamed("/auth/login");
                   }
                 },
                 child: Text(

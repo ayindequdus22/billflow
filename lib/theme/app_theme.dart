@@ -30,14 +30,35 @@ class AppTheme {
           ),
         ),
       ),
+
       textButtonTheme: TextButtonThemeData(
         style: ButtonStyle(
           foregroundColor: WidgetStatePropertyAll(colorScheme.primary),
           textStyle: WidgetStatePropertyAll(
             Theme.of(
               context,
-            ).textTheme.titleMedium!.copyWith(fontWeight: FontWeight.w500),
+            ).textTheme.bodyLarge!.copyWith(fontWeight: FontWeight.w500),
           ),
+        ),
+      ),
+      inputDecorationTheme: InputDecorationTheme(
+        hintStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(
+          color: AppColorScheme().disableTextColor,
+        ),
+        filled: true,
+        errorStyle: TextStyle(
+          fontSize: 12.sp,
+          fontWeight: FontWeight.w500,
+          color: colorScheme.error,
+        ),
+        fillColor: Colors.white,
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10.r),
+          borderSide: BorderSide(color: colorScheme.primary),
+        ),
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10.r),
+          borderSide: BorderSide(color: colorScheme.onPrimaryContainer),
         ),
       ),
     );
