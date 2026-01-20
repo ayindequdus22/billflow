@@ -66,7 +66,7 @@ class _SplashScreenState extends State<SplashScreen>
     _controller.addStatusListener((status) {
       if (status == AnimationStatus.completed) {
         if (!mounted) return;
-        Get.offNamed('/login');
+        Get.offNamed('/onboarding');
       }
     });
   }

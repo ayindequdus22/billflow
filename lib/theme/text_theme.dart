@@ -16,7 +16,6 @@ class AppTextTheme {
       bodyMedium: GoogleFonts.instrumentSans(
         fontSize: 14.sp,
         fontWeight: FontWeight.w500,
-        height: 10,
       ),
     );
   }
