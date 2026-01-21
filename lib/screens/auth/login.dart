@@ -110,8 +110,21 @@ class LoginScreen extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text("Don't have an account?"),
-                TextButton(onPressed: () {}, child: Text("Sign Up")),
+                Text(
+                  "Don't have an account?",
+                  style: themeContext.textTheme.bodyLarge?.copyWith(
+                    color: themeContext.colorScheme.surfaceBright,
+                  ),
+                ),
+                TextButton(
+                  onPressed: () {},
+                  child: Text(
+                    "Sign Up",
+                    style: themeContext.textTheme.bodyLarge?.copyWith(
+                      color: themeContext.colorScheme.primary,
+                    ),
+                  ),
+                ),
               ],
             ),
           ],
