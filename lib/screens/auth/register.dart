@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
 
 final List<String> bottomText = [
   "At least 8 characters",
@@ -223,7 +224,9 @@ class RegisterScreen extends StatelessWidget {
 
                   16.verticalSpace,
                   ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Get.toNamed("/auth/verify-mail");
+                    },
                     child: Text(
                       "Create Account",
                       // style: themeContext.textTheme.bodyLarge?.copyWith(
