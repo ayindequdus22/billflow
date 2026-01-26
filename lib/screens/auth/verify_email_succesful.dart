@@ -1,6 +1,7 @@
 import 'package:billflow/theme/color_scheme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 
 class VerifyEmailSuccesful extends StatefulWidget {
   const VerifyEmailSuccesful({super.key});
@@ -10,6 +11,21 @@ class VerifyEmailSuccesful extends StatefulWidget {
 }
 
 class _VerifyEmailSuccesfulState extends State<VerifyEmailSuccesful> {
+  @override
+  void initState() {
+    // redirect to add bill screen after 3 seconds
+    Future.delayed(Duration(seconds: 3), () {
+      // Navigator.pushReplacementNamed(context, "/add-bill");
+      Get.offAndToNamed("/add-bill");
+      // Get.snackbar(
+      //   "Success",
+      //   "Email verified successfully!",
+      //   snackPosition: SnackPosition.BOTTOM,
+      // );
+    });
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     final themeContext = Theme.of(context);
