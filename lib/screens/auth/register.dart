@@ -1,10 +1,266 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
+
+final List<String> bottomText = [
+  "At least 8 characters",
+  "One uppercase and lowercase letter",
+  "One number or special character",
+];
 
 class RegisterScreen extends StatelessWidget {
   const RegisterScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    final themeContext = Theme.of(context);
+
+    return Scaffold(
+      body: SingleChildScrollView(
+        padding: EdgeInsets.symmetric(horizontal: 10.r, vertical: 20.h),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Column(
+              children: [
+                50.verticalSpace,
+                SvgPicture.asset(
+                  "assets/icons/logo.svg",
+                  height: 70.h,
+                  width: 70.h,
+                ),
+                24.verticalSpace,
+                Text(
+                  "Create Account",
+                  style: themeContext.textTheme.headlineLarge,
+                ),
+                8.verticalSpace,
+                Text(
+                  "Start your journey to better bill management",
+                  style: themeContext.textTheme.bodyMedium?.copyWith(
+                    color: themeContext.colorScheme.surfaceBright,
+                  ),
+                ),
+                30.verticalSpace,
+              ],
+            ),
+
+            Form(
+              child: Column(
+                spacing: 8.h,
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: [
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        "Full name",
+                        style: themeContext.textTheme.bodyMedium,
+                      ),
+                      TextField(
+                        decoration: InputDecoration(
+                          hintText: "Enter your name",
+                          prefixIcon: Padding(
+                            padding: const EdgeInsets.all(12.0),
+                            child: SvgPicture.asset(
+                              "assets/icons/user.svg",
+                              height: 2.h,
+                              width: 2.h,
+                              colorFilter: ColorFilter.mode(
+                                themeContext.colorScheme.onPrimaryContainer,
+                                BlendMode.srcIn,
+                              ),
+                              fit: BoxFit.contain,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text("Email", style: themeContext.textTheme.bodyMedium),
+                      TextField(
+                        decoration: InputDecoration(
+                          hintText: "yourname@email.com",
+                          prefixIcon: Padding(
+                            padding: const EdgeInsets.all(12.0),
+                            child: SvgPicture.asset(
+                              "assets/icons/mail-01.svg",
+                              height: 2.h,
+                              width: 2.h,
+                              colorFilter: ColorFilter.mode(
+                                themeContext.colorScheme.onPrimaryContainer,
+                                BlendMode.srcIn,
+                              ),
+                              fit: BoxFit.contain,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+
+                    children: [
+                      Text(
+                        "Password",
+                        style: themeContext.textTheme.bodyMedium,
+                      ),
+                      TextField(
+                        decoration: InputDecoration(
+                          hintText: "Create your password",
+                          prefixIcon: Padding(
+                            padding: const EdgeInsets.all(
+                              12.0,
+                            ), // Adjust padding as needed
+                            child: SvgPicture.asset(
+                              "assets/icons/lock-password.svg",
+                              height: 2.h,
+                              width: 2.h,
+                              colorFilter: ColorFilter.mode(
+                                themeContext.colorScheme.onPrimaryContainer,
+                                BlendMode.srcIn,
+                              ),
+                              fit: BoxFit.contain,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+
+                    children: [
+                      Text(
+                        "Confirm Password",
+                        style: themeContext.textTheme.bodyMedium,
+                      ),
+                      TextField(
+                        decoration: InputDecoration(
+                          hintText: "Enter your password",
+                          prefixIcon: Padding(
+                            padding: const EdgeInsets.all(
+                              12.0,
+                            ), // Adjust padding as needed
+                            child: SvgPicture.asset(
+                              "assets/icons/lock-password.svg",
+                              height: 2.h,
+                              width: 2.h,
+                              colorFilter: ColorFilter.mode(
+                                themeContext.colorScheme.onPrimaryContainer,
+                                BlendMode.srcIn,
+                              ),
+                              fit: BoxFit.contain,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+
+                  8.verticalSpace,
+                  Container(
+                    width: double.infinity,
+                    padding: EdgeInsets.all(16.r),
+                    decoration: BoxDecoration(
+                      color: Color.fromRGBO(241, 245, 249, 1),
+                      borderRadius: BorderRadius.circular(8.r),
+                      border: Border.all(
+                        color: Color.fromRGBO(168, 200, 255, 1),
+                        width: 1.w,
+                      ),
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          "Password must contain:",
+                          style: themeContext.textTheme.bodyMedium?.copyWith(
+                            color: themeContext.colorScheme.surfaceBright,
+                          ),
+                        ),
+                        6.verticalSpace,
+                        ...bottomText.map(
+                          (text) => Container(
+                            margin: EdgeInsets.symmetric(vertical: 4.h),
+                            child: Row(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              spacing: 5.w,
+                              children: [
+                                3.horizontalSpace,
+                                Text(
+                                  ".",
+                                  style: themeContext.textTheme.bodySmall
+                                      ?.copyWith(
+                                        color: themeContext
+                                            .colorScheme
+                                            .surfaceBright,
+                                      ),
+                                ),
+                                Text(
+                                  text,
+                                  style: themeContext.textTheme.bodySmall
+                                      ?.copyWith(
+                                        color: themeContext
+                                            .colorScheme
+                                            .surfaceBright,
+                                      ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+
+                  16.verticalSpace,
+                  ElevatedButton(
+                    onPressed: () {
+                      Get.toNamed("/auth/verify-mail");
+                    },
+                    child: Text(
+                      "Create Account",
+                      // style: themeContext.textTheme.bodyLarge?.copyWith(
+                      //   color: Colors.white,
+                      // ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            4.verticalSpace,
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  "Already have an account?",
+                  style: themeContext.textTheme.bodyLarge?.copyWith(
+                    color: themeContext.colorScheme.surfaceBright,
+                  ),
+                ),
+                TextButton(
+                  onPressed: () {},
+                  child: Text(
+                    "Sign In",
+                    style: themeContext.textTheme.bodyLarge?.copyWith(
+                      color: themeContext.colorScheme.primary,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }

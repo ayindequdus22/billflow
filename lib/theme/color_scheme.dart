@@ -6,7 +6,12 @@ class AppColorScheme {
   final Color supportLight = Color.fromRGBO(238, 231, 248, 1);
   final Color supportMain = Color.fromRGBO(106, 77, 160, 1);
   final Color disableTextColor = Color.fromRGBO(148, 163, 184, 1);
+  final Color success = Color.fromRGBO(22, 163, 74, 1);
+
+
   static final Color _primary = Color.fromRGBO(26, 115, 232, 1);
+
+
 
   static final Color _primaryVariant = Color.fromRGBO(232, 241, 255, 1);
   static ColorScheme lightColorScheme = ColorScheme.light(

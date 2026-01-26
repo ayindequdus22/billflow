@@ -17,6 +17,10 @@ class AppTextTheme {
         fontSize: 14.sp,
         fontWeight: FontWeight.w500,
       ),
+      bodySmall: GoogleFonts.instrumentSans(
+        fontSize: 12.sp,
+        fontWeight: FontWeight.w500,
+      ),
     );
   }
 }
