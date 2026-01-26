@@ -2,6 +2,7 @@ import 'package:billflow/theme/color_scheme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
 import 'package:pinput/pinput.dart';
 
 class VerifyEmailScreen extends StatefulWidget {
@@ -22,7 +23,7 @@ class _VerifyEmailScreenState extends State<VerifyEmailScreen> {
     try {
       // Simulate a network call
       await Future.delayed(const Duration(seconds: 2));
-
+      Get.offAllNamed("/auth/verify-mail/success");
       // verification logic here
     } catch (e) {
       // handle error if needed
@@ -47,12 +48,12 @@ class _VerifyEmailScreenState extends State<VerifyEmailScreen> {
           children: [
             Column(
               children: [
-                50.verticalSpace,
+                SizedBox(height: ScreenUtil().screenHeight * 0.2),
                 Container(
                   padding: EdgeInsets.all(20.r),
                   decoration: BoxDecoration(
                     color: themeContext.colorScheme.primaryFixed,
-                    borderRadius: BorderRadius.circular(10.r),
+                    borderRadius: BorderRadius.circular(30.r),
                   ),
                   child: SvgPicture.asset(
                     "assets/icons/mail-01.svg",

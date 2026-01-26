@@ -1,6 +1,7 @@
 import 'package:billflow/screens/auth/login.dart';
 import 'package:billflow/screens/auth/register.dart';
 import 'package:billflow/screens/auth/verify_email.dart';
+import 'package:billflow/screens/auth/verify_email_succesful.dart';
 import 'package:billflow/screens/onboarding.dart';
 import 'package:billflow/screens/splash.dart';
 import 'package:flutter/material.dart';
@@ -20,6 +21,9 @@ class OnGenerateRoute {
 
       case "/auth/verify-mail":
         return MaterialPageRoute(builder: (_) => const VerifyEmailScreen());
+      case "/auth/verify-mail/success":
+        return MaterialPageRoute(builder: (_) => const VerifyEmailSuccesful());
+        
       default:
         return MaterialPageRoute(builder: (_) => Container());
     }
