@@ -16,7 +16,7 @@ class _VerifyEmailSuccesfulState extends State<VerifyEmailSuccesful> {
     // redirect to add bill screen after 3 seconds
     Future.delayed(Duration(seconds: 3), () {
       // Navigator.pushReplacementNamed(context, "/add-bill");
-      Get.offAndToNamed("/add-bill");
+      Get.offAndToNamed("/setup");
       // Get.snackbar(
       //   "Success",
       //   "Email verified successfully!",

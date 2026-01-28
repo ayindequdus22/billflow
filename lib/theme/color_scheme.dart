@@ -8,10 +8,7 @@ class AppColorScheme {
   final Color disableTextColor = Color.fromRGBO(148, 163, 184, 1);
   final Color success = Color.fromRGBO(22, 163, 74, 1);
 
-
   static final Color _primary = Color.fromRGBO(26, 115, 232, 1);
-
-
 
   static final Color _primaryVariant = Color.fromRGBO(232, 241, 255, 1);
   static ColorScheme lightColorScheme = ColorScheme.light(
@@ -27,6 +24,16 @@ class AppColorScheme {
 
   static ColorScheme darkColorScheme = ColorScheme.dark(
     primary: _primary,
-    onPrimary: Colors.white,
+    onPrimary: Colors.black,
+
+    primaryContainer: Color.fromRGBO(30, 58, 138, 1),
+    onPrimaryContainer: Color.fromRGBO(226, 232, 240, 1),
+
+    surfaceBright: Color.fromRGBO(148, 163, 184, 1),
+    surface: Color.fromRGBO(15, 23, 42, 1),
+    onSurface: Color.fromRGBO(226, 232, 240, 1),
+
+    error: Color.fromRGBO(248, 113, 113, 1),
+    onError: Colors.black,
   );
 }

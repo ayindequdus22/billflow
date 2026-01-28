@@ -9,6 +9,7 @@ class LoginScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final themeContext = Theme.of(context);
     return Scaffold(
+      resizeToAvoidBottomInset: true,
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 10.r),
         child: Column(
@@ -39,29 +40,31 @@ class LoginScreen extends StatelessWidget {
 
             Form(
               child: Column(
-                spacing: 8.h,
+                spacing: 10.h,
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
+                    spacing: 4.h,
                     children: [
                       Text("Email", style: themeContext.textTheme.bodyMedium),
                       TextField(
+                        keyboardType: TextInputType.emailAddress,
+
                         decoration: InputDecoration(
                           hintText: "yourname@email.com",
+
                           prefixIcon: Padding(
-                            padding: const EdgeInsets.all(
-                              12.0,
-                            ), // Adjust padding as needed
+                            padding: const EdgeInsets.all(12.0),
                             child: SvgPicture.asset(
                               "assets/icons/mail-01.svg",
-                              height: 2.h,
-                              width: 2.h,
+                              height: 5.h,
+                              width: 5.h,
                               colorFilter: ColorFilter.mode(
                                 themeContext.colorScheme.onPrimaryContainer,
                                 BlendMode.srcIn,
                               ),
-                              fit: BoxFit.contain,
+                              // fit: BoxFit.contain,
                             ),
                           ),
                         ),
@@ -71,6 +74,7 @@ class LoginScreen extends StatelessWidget {
 
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
+                    spacing: 4.h,
 
                     children: [
                       Text(
@@ -78,6 +82,7 @@ class LoginScreen extends StatelessWidget {
                         style: themeContext.textTheme.bodyMedium,
                       ),
                       TextField(
+                        keyboardType: TextInputType.visiblePassword,
                         decoration: InputDecoration(
                           hintText: "Enter your password",
                           prefixIcon: Padding(
@@ -86,8 +91,8 @@ class LoginScreen extends StatelessWidget {
                             ), // Adjust padding as needed
                             child: SvgPicture.asset(
                               "assets/icons/lock-password.svg",
-                              height: 2.h,
-                              width: 2.h,
+                              height: 20.h,
+                              width: 20.h,
                               colorFilter: ColorFilter.mode(
                                 themeContext.colorScheme.onPrimaryContainer,
                                 BlendMode.srcIn,
