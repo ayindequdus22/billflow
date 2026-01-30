@@ -104,9 +104,9 @@ class _VerifyEmailScreenState extends State<VerifyEmailScreen> {
                   color: appColorScheme.disableTextColor,
                 ),
                 decoration: BoxDecoration(
-                  color: Colors.white,
+                  color: themeContext.colorScheme.surfaceBright,
                   borderRadius: BorderRadius.circular(10.r),
-                  border: Border.all(color: appColorScheme.disableTextColor),
+                  border: Border.all(color: themeContext.colorScheme.outline),
                 ),
               ),
             ),

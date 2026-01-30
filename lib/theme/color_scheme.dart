@@ -35,6 +35,8 @@ class AppColorScheme {
 
   static ColorScheme darkColorScheme = ColorScheme.dark(
     primary: _primary,
+    primaryFixed: Color.fromRGBO(51, 65, 85, 1),
+
     primaryContainer: Color.fromRGBO(51, 90, 160, 0.7),
     onPrimaryContainer: Color.fromRGBO(41, 50, 65, 1),
 
