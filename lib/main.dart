@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
           theme: AppTheme.lightMode(context),
           darkTheme: AppTheme.darkMode(context),
           // initialRoute: "/",
-          initialRoute: "/auth/verify-mail",
+          initialRoute: "/add-bill",
           onGenerateRoute: OnGenerateRoute.generateRoute,
         );
       },
