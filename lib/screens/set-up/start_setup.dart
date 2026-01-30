@@ -47,7 +47,7 @@ class StartSetup extends StatelessWidget {
             Text(
               "Adding bills is fast and simple. Get started in seconds and let BillFlow handle the rest.",
               style: themeContext.textTheme.bodyLarge?.copyWith(
-                color: themeContext.colorScheme.surfaceBright,
+                color: themeContext.colorScheme.onSurfaceVariant,
               ),
               textAlign: TextAlign.center,
             ),

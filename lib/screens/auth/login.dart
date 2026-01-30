@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
@@ -31,7 +32,7 @@ class LoginScreen extends StatelessWidget {
                 Text(
                   "Sign in to continue managing your bills",
                   style: themeContext.textTheme.bodyMedium?.copyWith(
-                    color: themeContext.colorScheme.surfaceBright,
+                    color: themeContext.colorScheme.onSurfaceVariant,
                   ),
                 ),
                 30.verticalSpace,
@@ -53,15 +54,21 @@ class LoginScreen extends StatelessWidget {
 
                         decoration: InputDecoration(
                           hintText: "yourname@email.com",
-
+                          prefixIconConstraints: BoxConstraints(
+                            minWidth: 30,
+                            minHeight: 0,
+                          ),
                           prefixIcon: Padding(
-                            padding: const EdgeInsets.all(12.0),
+                            padding: const EdgeInsets.only(
+                              left: 12.0,
+                              right: 1.0,
+                            ),
                             child: SvgPicture.asset(
                               "assets/icons/mail-01.svg",
-                              height: 5.h,
-                              width: 5.h,
+                              height: 20.h,
+                              width: 20.h,
                               colorFilter: ColorFilter.mode(
-                                themeContext.colorScheme.onPrimaryContainer,
+                                Color.fromRGBO(148, 163, 184, 1),
                                 BlendMode.srcIn,
                               ),
                               // fit: BoxFit.contain,
@@ -82,22 +89,22 @@ class LoginScreen extends StatelessWidget {
                         style: themeContext.textTheme.bodyMedium,
                       ),
                       TextField(
-                        keyboardType: TextInputType.visiblePassword,
                         decoration: InputDecoration(
                           hintText: "Enter your password",
+                          prefixIconConstraints: BoxConstraints(
+                            minWidth: 30.w,
+                            minHeight: 0,
+                          ),
                           prefixIcon: Padding(
-                            padding: const EdgeInsets.all(
-                              12.0,
-                            ), // Adjust padding as needed
+                            padding: EdgeInsets.only(left: 12.w, right: 1.w),
                             child: SvgPicture.asset(
                               "assets/icons/lock-password.svg",
                               height: 20.h,
                               width: 20.h,
                               colorFilter: ColorFilter.mode(
-                                themeContext.colorScheme.onPrimaryContainer,
+                                Color.fromRGBO(148, 163, 184, 1),
                                 BlendMode.srcIn,
                               ),
-                              fit: BoxFit.contain,
                             ),
                           ),
                         ),
@@ -117,11 +124,11 @@ class LoginScreen extends StatelessWidget {
                 Text(
                   "Don't have an account?",
                   style: themeContext.textTheme.bodyLarge?.copyWith(
-                    color: themeContext.colorScheme.surfaceBright,
+                    color: themeContext.colorScheme.onSurfaceVariant,
                   ),
                 ),
                 TextButton(
-                  onPressed: () {},
+                  onPressed: () => Get.toNamed("/auth/register"),
                   child: Text(
                     "Sign Up",
                     style: themeContext.textTheme.bodyLarge?.copyWith(

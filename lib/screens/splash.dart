@@ -115,7 +115,7 @@ class _SplashScreenState extends State<SplashScreen>
                         Text(
                           "Your Smart Bill Tracking and Reminder App",
                           style: themeContext.textTheme.bodyLarge?.copyWith(
-                            color: themeContext.colorScheme.onPrimaryContainer,
+                            color: Color.fromRGBO(226, 232, 240, 1),
                           ),
                           textAlign: TextAlign.center,
                         ),

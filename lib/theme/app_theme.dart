@@ -41,43 +41,27 @@ class AppTheme {
           ),
         ),
       ),
+
       inputDecorationTheme: InputDecorationTheme(
-        hintStyle: Theme.of(context).textTheme.bodyMedium?.copyWith(
-          color: colorScheme.outline, // Use outline instead of custom color
+        hintStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(
+          color: AppColorScheme().disableTextColor,
         ),
         filled: true,
-        fillColor: colorScheme
-            .surfaceContainerHighest, // Proper fill color for both themes
-
+        fillColor: colorScheme.surfaceBright,
         errorStyle: TextStyle(
           fontSize: 12.sp,
           fontWeight: FontWeight.w500,
           color: colorScheme.error,
         ),
-
-        // Focused state
+        // fillColor: Colors.white,
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10.r),
-          borderSide: BorderSide(
-            color: colorScheme.primary,
-            width: 2.0, // Slightly thicker when focused
-          ),
+          borderSide: BorderSide(color: colorScheme.primary, width: 2.0),
         ),
 
-        // Enabled state
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10.r),
-          borderSide: BorderSide(
-            color: colorScheme
-                .surfaceBright, // Use outline, not onPrimaryContainer
-            width: 1.0,
-          ),
-        ),
-
-        // Error state
-        errorBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(10.r),
-          borderSide: BorderSide(color: colorScheme.error, width: 1.0),
+          borderSide: BorderSide(color: colorScheme.outline),
         ),
 
         // Focused error state
@@ -96,7 +80,7 @@ class AppTheme {
         ),
 
         // Content padding for consistency
-        contentPadding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 14.h),
+        contentPadding: EdgeInsets.symmetric(horizontal: 6.w, vertical: 14.h),
       ),
     );
   }

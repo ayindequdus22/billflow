@@ -63,7 +63,7 @@ class _VerifyEmailSuccesfulState extends State<VerifyEmailSuccesful> {
             Text(
               "Your email has been verified. Get ready to manage your bills smarter.",
               style: themeContext.textTheme.bodyLarge?.copyWith(
-                color: themeContext.colorScheme.surfaceBright,
+                color: themeContext.colorScheme.onSurfaceVariant,
               ),
               textAlign: TextAlign.center,
             ),

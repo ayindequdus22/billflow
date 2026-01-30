@@ -127,7 +127,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                         pageBuilderProviders[index].description,
                         textAlign: TextAlign.center,
                         style: themeContext.textTheme.bodyMedium?.copyWith(
-                          color: themeContext.colorScheme.surfaceBright,
+                          color: themeContext.colorScheme.surfaceContainer,
                         ),
                       ),
                     ],

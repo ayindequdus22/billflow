@@ -75,7 +75,7 @@ class _VerifyEmailScreenState extends State<VerifyEmailScreen> {
                 Text(
                   "We sent a 6-digit code to user@example.com. Enter it below to verify your account.",
                   style: themeContext.textTheme.bodyMedium?.copyWith(
-                    color: themeContext.colorScheme.surfaceBright,
+                    color: themeContext.colorScheme.onSurfaceVariant,
                   ),
                   textAlign: TextAlign.center,
                 ),

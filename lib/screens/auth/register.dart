@@ -39,7 +39,7 @@ class RegisterScreen extends StatelessWidget {
                 Text(
                   "Start your journey to better bill management",
                   style: themeContext.textTheme.bodyMedium?.copyWith(
-                    color: themeContext.colorScheme.surfaceBright,
+                    color: themeContext.colorScheme.onSurfaceVariant,
                   ),
                 ),
                 30.verticalSpace,
@@ -48,11 +48,13 @@ class RegisterScreen extends StatelessWidget {
 
             Form(
               child: Column(
-                spacing: 8.h,
+                spacing: 10.h,
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
+                    spacing: 4.h,
+
                     children: [
                       Text(
                         "Full name",
@@ -60,15 +62,19 @@ class RegisterScreen extends StatelessWidget {
                       ),
                       TextField(
                         decoration: InputDecoration(
+                          prefixIconConstraints: BoxConstraints(
+                            minWidth: 30.w,
+                            minHeight: 0,
+                          ),
                           hintText: "Enter your name",
                           prefixIcon: Padding(
-                            padding: const EdgeInsets.all(12.0),
+                            padding: EdgeInsets.only(left: 12.w, right: 1.w),
                             child: SvgPicture.asset(
                               "assets/icons/user.svg",
-                              height: 2.h,
-                              width: 2.h,
+                              height: 20.h,
+                              width: 20.h,
                               colorFilter: ColorFilter.mode(
-                                themeContext.colorScheme.onPrimaryContainer,
+                                Color.fromRGBO(148, 163, 184, 1),
                                 BlendMode.srcIn,
                               ),
                               fit: BoxFit.contain,
@@ -81,19 +87,25 @@ class RegisterScreen extends StatelessWidget {
 
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
+                    spacing: 4.h,
+
                     children: [
                       Text("Email", style: themeContext.textTheme.bodyMedium),
                       TextField(
                         decoration: InputDecoration(
+                          prefixIconConstraints: BoxConstraints(
+                            minWidth: 30.w,
+                            minHeight: 0,
+                          ),
                           hintText: "yourname@email.com",
                           prefixIcon: Padding(
-                            padding: const EdgeInsets.all(12.0),
+                            padding: EdgeInsets.only(left: 12.w, right: 1.w),
                             child: SvgPicture.asset(
                               "assets/icons/mail-01.svg",
-                              height: 2.h,
-                              width: 2.h,
+                              height: 20.h,
+                              width: 20.h,
                               colorFilter: ColorFilter.mode(
-                                themeContext.colorScheme.onPrimaryContainer,
+                                Color.fromRGBO(148, 163, 184, 1),
                                 BlendMode.srcIn,
                               ),
                               fit: BoxFit.contain,
@@ -106,6 +118,7 @@ class RegisterScreen extends StatelessWidget {
 
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
+                    spacing: 4.h,
 
                     children: [
                       Text(
@@ -115,16 +128,19 @@ class RegisterScreen extends StatelessWidget {
                       TextField(
                         decoration: InputDecoration(
                           hintText: "Create your password",
+                          prefixIconConstraints: BoxConstraints(
+                            minWidth: 30.w,
+                            minHeight: 0,
+                          ),
                           prefixIcon: Padding(
-                            padding: const EdgeInsets.all(
-                              12.0,
-                            ), // Adjust padding as needed
+                            padding: EdgeInsets.only(left: 12.w, right: 1.w),
+
                             child: SvgPicture.asset(
                               "assets/icons/lock-password.svg",
-                              height: 2.h,
-                              width: 2.h,
+                              height: 20.h,
+                              width: 20.h,
                               colorFilter: ColorFilter.mode(
-                                themeContext.colorScheme.onPrimaryContainer,
+                                Color.fromRGBO(148, 163, 184, 1),
                                 BlendMode.srcIn,
                               ),
                               fit: BoxFit.contain,
@@ -137,6 +153,7 @@ class RegisterScreen extends StatelessWidget {
 
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
+                    spacing: 4.h,
 
                     children: [
                       Text(
@@ -145,17 +162,20 @@ class RegisterScreen extends StatelessWidget {
                       ),
                       TextField(
                         decoration: InputDecoration(
+                          prefixIconConstraints: BoxConstraints(
+                            minWidth: 30.w,
+                            minHeight: 0,
+                          ),
                           hintText: "Enter your password",
                           prefixIcon: Padding(
-                            padding: const EdgeInsets.all(
-                              12.0,
-                            ), // Adjust padding as needed
+                            padding: EdgeInsets.only(left: 12.w, right: 1.w),
+
                             child: SvgPicture.asset(
                               "assets/icons/lock-password.svg",
-                              height: 2.h,
-                              width: 2.h,
+                              height: 20.h,
+                              width: 20.h,
                               colorFilter: ColorFilter.mode(
-                                themeContext.colorScheme.onPrimaryContainer,
+                                Color.fromRGBO(148, 163, 184, 1),
                                 BlendMode.srcIn,
                               ),
                               fit: BoxFit.contain,
@@ -171,10 +191,11 @@ class RegisterScreen extends StatelessWidget {
                     width: double.infinity,
                     padding: EdgeInsets.all(16.r),
                     decoration: BoxDecoration(
-                      color: Color.fromRGBO(241, 245, 249, 1),
+                      color: themeContext.colorScheme.surfaceTint,
                       borderRadius: BorderRadius.circular(8.r),
                       border: Border.all(
-                        color: Color.fromRGBO(168, 200, 255, 1),
+                        color: themeContext.colorScheme.primaryContainer,
+                        // color: Color.fromRGBO(168, 200, 255, 1),
                         width: 1.w,
                       ),
                     ),
@@ -184,7 +205,7 @@ class RegisterScreen extends StatelessWidget {
                         Text(
                           "Password must contain:",
                           style: themeContext.textTheme.bodyMedium?.copyWith(
-                            color: themeContext.colorScheme.surfaceBright,
+                            color: themeContext.colorScheme.onSurfaceVariant,
                           ),
                         ),
                         6.verticalSpace,
@@ -202,7 +223,7 @@ class RegisterScreen extends StatelessWidget {
                                       ?.copyWith(
                                         color: themeContext
                                             .colorScheme
-                                            .surfaceBright,
+                                            .onSurfaceVariant,
                                       ),
                                 ),
                                 Text(
@@ -211,7 +232,7 @@ class RegisterScreen extends StatelessWidget {
                                       ?.copyWith(
                                         color: themeContext
                                             .colorScheme
-                                            .surfaceBright,
+                                            .onSurfaceVariant,
                                       ),
                                 ),
                               ],
@@ -244,11 +265,11 @@ class RegisterScreen extends StatelessWidget {
                 Text(
                   "Already have an account?",
                   style: themeContext.textTheme.bodyLarge?.copyWith(
-                    color: themeContext.colorScheme.surfaceBright,
+                    color: themeContext.colorScheme.onSurfaceVariant,
                   ),
                 ),
                 TextButton(
-                  onPressed: () {},
+                  onPressed: () => Get.toNamed("/auth/login"),
                   child: Text(
                     "Sign In",
                     style: themeContext.textTheme.bodyLarge?.copyWith(
