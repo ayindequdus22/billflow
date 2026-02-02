@@ -1,8 +1,7 @@
-import 'package:billflow/theme/color_scheme.dart';
+import 'package:billflow/widgets/select.dart';
 import 'package:billflow/widgets/datepicker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/svg.dart';
 
 class AddBill extends StatefulWidget {
   const AddBill({super.key});
@@ -12,6 +11,19 @@ class AddBill extends StatefulWidget {
 }
 
 class _AddBillState extends State<AddBill> {
+  final List<String> frequency = ['Daily', 'Monthly', 'Yearly'];
+  final List<String> categories = [
+    "Housing",
+    "Utility",
+    "Savings",
+    "Subscription",
+    "Insurance",
+    "Loan",
+    "Other",
+  ];
+
+  String? selectedCategories = "Subscription";
+
   String selected = "Weekly";
   final options = ["Weekly", "Monthly", "Quarterly", "Yearly"];
 
@@ -45,44 +57,18 @@ class _AddBillState extends State<AddBill> {
               ),
 
               DatePicker(),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                spacing: 4.h,
-                children: [
-                  DropdownButtonFormField<String>(
-                    // hint: Text("Choose frequeny"),
-                    decoration: InputDecoration(
-                      // labelText: "Select item",
-                      hintText: "Choose frequency",
-                      hintStyle: themeContext.textTheme.bodyMedium!.copyWith(
-                        color: AppColorScheme().disableTextColor,
-                      ),
-                      suffixIcon: SvgPicture.asset(
-                        "assets/icons/chevron-down.svg",
-                        colorFilter: ColorFilter.mode(
-                          themeContext.colorScheme.primaryContainer,
-                          BlendMode.srcIn,
-                        ),
-                      ),
-                      border: OutlineInputBorder(),
-                    ),
-                    items: ['Daily', 'Monthly', 'Yearly'].map((item) {
-                      return DropdownMenuItem(value: item, child: Text(item));
-                    }).toList(),
-                    onChanged: (value) {
-                      print("Selected: $value");
-                    },
-                    validator: (value) =>
-                        value == null ? "Please select a frequency" : null,
-                  ),
-                ],
+              Select(
+                title: "Frequency",
+                hintText: "Choose frequency",
+                items: frequency,
               ),
 
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                spacing: 4.h,
-                children: [Text("Category")],
+              Select(
+                title: "Category",
+                hintText: "Choose category",
+                items: categories,
               ),
+
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 spacing: 4.h,
@@ -102,6 +88,11 @@ class _AddBillState extends State<AddBill> {
             ],
           ),
         ),
+      ),
+
+      bottomNavigationBar: Padding(
+        padding: EdgeInsets.symmetric(horizontal: 10.r, vertical: 30.r),
+        child: ElevatedButton(onPressed: () {}, child: Text("Save bill")),
       ),
     );
   }
