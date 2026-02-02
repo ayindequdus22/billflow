@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
 
 class StartSetup extends StatelessWidget {
   const StartSetup({super.key});
@@ -46,13 +47,14 @@ class StartSetup extends StatelessWidget {
             Text(
               "Adding bills is fast and simple. Get started in seconds and let BillFlow handle the rest.",
               style: themeContext.textTheme.bodyLarge?.copyWith(
-                color: themeContext.colorScheme.surfaceBright,
+                color: themeContext.colorScheme.onSurfaceVariant,
               ),
               textAlign: TextAlign.center,
             ),
             Spacer(),
             ElevatedButton(
               onPressed: () {
+                Get.toNamed("/add-bill");
                 // Navigate to the next setup step
               },
               style: ElevatedButton.styleFrom(

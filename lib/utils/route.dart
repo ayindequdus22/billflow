@@ -29,6 +29,8 @@ class OnGenerateRoute {
         return MaterialPageRoute(builder: (_) => const StartSetup());
       case "/add-bill":
         return MaterialPageRoute(builder: (_) => const AddBill());
+    
+    
       default:
         return MaterialPageRoute(builder: (_) => Container());
     }

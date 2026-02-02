@@ -8,25 +8,50 @@ class AppColorScheme {
   final Color disableTextColor = Color.fromRGBO(148, 163, 184, 1);
   final Color success = Color.fromRGBO(22, 163, 74, 1);
 
-
   static final Color _primary = Color.fromRGBO(26, 115, 232, 1);
-
-
 
   static final Color _primaryVariant = Color.fromRGBO(232, 241, 255, 1);
   static ColorScheme lightColorScheme = ColorScheme.light(
-    surface: Color.fromRGBO(248, 250, 252, 1),
+    // primary colors
     primary: _primary,
     onPrimary: Colors.white,
+    primaryContainer: Color.fromRGBO(168, 200, 255, 1), //primary borders
     primaryFixed: _primaryVariant,
+
     onPrimaryContainer: Color.fromRGBO(226, 232, 240, 1),
 
-    onSurface: Color.fromRGBO(15, 23, 42, 1),
-    surfaceBright: Color.fromRGBO(71, 85, 105, 1),
+    // surface colors
+    surface: Color.fromRGBO(248, 250, 252, 1),
+    onSurface: Color.fromRGBO(15, 23, 42, 1), //main text
+    onSurfaceVariant: Color.fromRGBO(71, 85, 105, 1), //secondary text
+    surfaceContainer: Color.fromRGBO(132, 134, 150, 1), //lighter secondary
+    surfaceTint: Color.fromRGBO(241, 245, 249, 1),
+
+    // Borders/outlines
+    outline: Color.fromRGBO(226, 232, 240, 1),
+
+    surfaceBright: Color.fromRGBO(255, 255, 255, 1), // White for cards/dialogs
   );
 
   static ColorScheme darkColorScheme = ColorScheme.dark(
     primary: _primary,
+    primaryFixed: Color.fromRGBO(51, 65, 85, 1),
+
+    primaryContainer: Color.fromRGBO(51, 90, 160, 0.7),
+    onPrimaryContainer: Color.fromRGBO(41, 50, 65, 1),
+
+    surface: Color.fromRGBO(15, 23, 42, 1),
+    onSurfaceVariant: Color.fromRGBO(148, 163, 184, 1),
+    surfaceContainer: Color.fromRGBO(132, 134, 150, 1), //lighter secondary
+    surfaceTint: Color.fromRGBO(30, 41, 59, 1), //elevated cards
+    surfaceBright: Color.fromRGBO(
+      30,
+      41,
+      59,
+      1,
+    ), // Brighter surfaces in dark mode for cards
+
+    outline: Color.fromRGBO(41, 50, 65, 1), // Darker borders
     onPrimary: Colors.white,
   );
 }

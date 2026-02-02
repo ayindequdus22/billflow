@@ -8,18 +8,22 @@ class AppTextTheme {
       headlineLarge: GoogleFonts.instrumentSans(
         fontSize: 24.sp,
         fontWeight: FontWeight.w600,
+        color: colorScheme.onSurface,
       ),
       bodyLarge: GoogleFonts.instrumentSans(
         fontSize: 16.sp,
         fontWeight: FontWeight.w600,
+        color: colorScheme.onSurface,
       ),
       bodyMedium: GoogleFonts.instrumentSans(
         fontSize: 14.sp,
         fontWeight: FontWeight.w500,
+        color: colorScheme.onSurface,
       ),
       bodySmall: GoogleFonts.instrumentSans(
         fontSize: 12.sp,
         fontWeight: FontWeight.w500,
+        color: colorScheme.onSurface,
       ),
     );
   }

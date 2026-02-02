@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
@@ -9,6 +10,7 @@ class LoginScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final themeContext = Theme.of(context);
     return Scaffold(
+      resizeToAvoidBottomInset: true,
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 10.r),
         child: Column(
@@ -30,7 +32,7 @@ class LoginScreen extends StatelessWidget {
                 Text(
                   "Sign in to continue managing your bills",
                   style: themeContext.textTheme.bodyMedium?.copyWith(
-                    color: themeContext.colorScheme.surfaceBright,
+                    color: themeContext.colorScheme.onSurfaceVariant,
                   ),
                 ),
                 30.verticalSpace,
@@ -39,29 +41,37 @@ class LoginScreen extends StatelessWidget {
 
             Form(
               child: Column(
-                spacing: 8.h,
+                spacing: 10.h,
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
+                    spacing: 4.h,
                     children: [
                       Text("Email", style: themeContext.textTheme.bodyMedium),
                       TextField(
+                        keyboardType: TextInputType.emailAddress,
+
                         decoration: InputDecoration(
                           hintText: "yourname@email.com",
+                          prefixIconConstraints: BoxConstraints(
+                            minWidth: 30,
+                            minHeight: 0,
+                          ),
                           prefixIcon: Padding(
-                            padding: const EdgeInsets.all(
-                              12.0,
-                            ), // Adjust padding as needed
+                            padding: const EdgeInsets.only(
+                              left: 12.0,
+                              right: 1.0,
+                            ),
                             child: SvgPicture.asset(
                               "assets/icons/mail-01.svg",
-                              height: 2.h,
-                              width: 2.h,
+                              height: 20.h,
+                              width: 20.h,
                               colorFilter: ColorFilter.mode(
-                                themeContext.colorScheme.onPrimaryContainer,
+                                Color.fromRGBO(148, 163, 184, 1),
                                 BlendMode.srcIn,
                               ),
-                              fit: BoxFit.contain,
+                              // fit: BoxFit.contain,
                             ),
                           ),
                         ),
@@ -71,6 +81,7 @@ class LoginScreen extends StatelessWidget {
 
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
+                    spacing: 4.h,
 
                     children: [
                       Text(
@@ -80,19 +91,20 @@ class LoginScreen extends StatelessWidget {
                       TextField(
                         decoration: InputDecoration(
                           hintText: "Enter your password",
+                          prefixIconConstraints: BoxConstraints(
+                            minWidth: 30.w,
+                            minHeight: 0,
+                          ),
                           prefixIcon: Padding(
-                            padding: const EdgeInsets.all(
-                              12.0,
-                            ), // Adjust padding as needed
+                            padding: EdgeInsets.only(left: 12.w, right: 1.w),
                             child: SvgPicture.asset(
                               "assets/icons/lock-password.svg",
-                              height: 2.h,
-                              width: 2.h,
+                              height: 20.h,
+                              width: 20.h,
                               colorFilter: ColorFilter.mode(
-                                themeContext.colorScheme.onPrimaryContainer,
+                                Color.fromRGBO(148, 163, 184, 1),
                                 BlendMode.srcIn,
                               ),
-                              fit: BoxFit.contain,
                             ),
                           ),
                         ),
@@ -112,11 +124,11 @@ class LoginScreen extends StatelessWidget {
                 Text(
                   "Don't have an account?",
                   style: themeContext.textTheme.bodyLarge?.copyWith(
-                    color: themeContext.colorScheme.surfaceBright,
+                    color: themeContext.colorScheme.onSurfaceVariant,
                   ),
                 ),
                 TextButton(
-                  onPressed: () {},
+                  onPressed: () => Get.toNamed("/auth/register"),
                   child: Text(
                     "Sign Up",
                     style: themeContext.textTheme.bodyLarge?.copyWith(

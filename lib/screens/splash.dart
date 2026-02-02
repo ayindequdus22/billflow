@@ -107,14 +107,16 @@ class _SplashScreenState extends State<SplashScreen>
                       children: [
                         Text(
                           "BillFlow",
-                            style: themeContext.textTheme.headlineLarge?.copyWith(
-                                color: themeContext.colorScheme.onPrimary),
-                         
+                          style: themeContext.textTheme.headlineLarge?.copyWith(
+                            color: Colors.white,
+                          ),
                         ),
                         SizedBox(height: 8.h),
                         Text(
                           "Your Smart Bill Tracking and Reminder App",
-                          style: themeContext.textTheme.bodyLarge?.copyWith(color: themeContext.colorScheme.onPrimaryContainer),
+                          style: themeContext.textTheme.bodyLarge?.copyWith(
+                            color: Color.fromRGBO(226, 232, 240, 1),
+                          ),
                           textAlign: TextAlign.center,
                         ),
                       ],

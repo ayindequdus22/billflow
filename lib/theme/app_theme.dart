@@ -41,25 +41,46 @@ class AppTheme {
           ),
         ),
       ),
+
       inputDecorationTheme: InputDecorationTheme(
         hintStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(
           color: AppColorScheme().disableTextColor,
         ),
         filled: true,
+        fillColor: colorScheme.surfaceBright,
         errorStyle: TextStyle(
           fontSize: 12.sp,
           fontWeight: FontWeight.w500,
           color: colorScheme.error,
         ),
-        fillColor: Colors.white,
+        // fillColor: Colors.white,
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10.r),
-          borderSide: BorderSide(color: colorScheme.primary),
+          borderSide: BorderSide(color: colorScheme.primary, width: 2.0),
         ),
+
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10.r),
-          borderSide: BorderSide(color: colorScheme.onPrimaryContainer),
+          borderSide: BorderSide(color: colorScheme.outline),
         ),
+
+        // Focused error state
+        focusedErrorBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10.r),
+          borderSide: BorderSide(color: colorScheme.error, width: 2.0),
+        ),
+
+        // Disabled state
+        disabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10.r),
+          borderSide: BorderSide(
+            color: colorScheme.outlineVariant, // Lighter for disabled
+            width: 1.0,
+          ),
+        ),
+
+        // Content padding for consistency
+        contentPadding: EdgeInsets.symmetric(horizontal: 6.w, vertical: 14.h),
       ),
     );
   }
