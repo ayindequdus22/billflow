@@ -2,6 +2,7 @@ import 'package:billflow/widgets/select.dart';
 import 'package:billflow/widgets/datepicker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 
 class AddBill extends StatefulWidget {
   const AddBill({super.key});
@@ -26,6 +27,27 @@ class _AddBillState extends State<AddBill> {
 
   String selected = "Weekly";
   final options = ["Weekly", "Monthly", "Quarterly", "Yearly"];
+
+  bool isLoading = false;
+
+  Future<void> addBill() async {
+    setState(() {
+      isLoading = true;
+    });
+
+    try {
+      // Simulate a network call
+      await Future.delayed(const Duration(seconds: 2));
+      Get.offAllNamed("/home");
+      // verification logic here
+    } catch (e) {
+      // handle error if needed
+    } finally {
+      setState(() {
+        isLoading = false;
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -92,7 +114,19 @@ class _AddBillState extends State<AddBill> {
 
       bottomNavigationBar: Padding(
         padding: EdgeInsets.symmetric(horizontal: 10.r, vertical: 30.r),
-        child: ElevatedButton(onPressed: () {}, child: Text("Save bill")),
+        child: ElevatedButton(
+          onPressed: () => addBill(),
+          child: isLoading
+              ? SizedBox(
+                  width: 20.w,
+                  height: 20.h,
+                  child: const CircularProgressIndicator(
+                    strokeWidth: 2,
+                    color: Colors.white,
+                  ),
+                )
+              : Text("Save bill"),
+        ),
       ),
     );
   }

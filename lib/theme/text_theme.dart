@@ -10,6 +10,11 @@ class AppTextTheme {
         fontWeight: FontWeight.w600,
         color: colorScheme.onSurface,
       ),
+      headlineSmall: GoogleFonts.instrumentSans(
+                fontSize: 18.sp,
+        fontWeight: FontWeight.w600,
+        color: colorScheme.onSurface,
+      ),
       bodyLarge: GoogleFonts.instrumentSans(
         fontSize: 16.sp,
         fontWeight: FontWeight.w600,

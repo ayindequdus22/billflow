@@ -9,8 +9,34 @@ final List<String> bottomText = [
   "One number or special character",
 ];
 
-class RegisterScreen extends StatelessWidget {
+class RegisterScreen extends StatefulWidget {
   const RegisterScreen({super.key});
+
+  @override
+  State<RegisterScreen> createState() => _RegisterScreenState();
+}
+
+class _RegisterScreenState extends State<RegisterScreen> {
+  bool isLoading = false;
+
+  Future<void> register() async {
+    setState(() {
+      isLoading = true;
+    });
+
+    try {
+      // Simulate a network call
+      await Future.delayed(const Duration(seconds: 2));
+      Get.offAllNamed("/auth/verify-mail");
+      // verification logic here
+    } catch (e) {
+      // handle error if needed
+    } finally {
+      setState(() {
+        isLoading = false;
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -126,6 +152,8 @@ class RegisterScreen extends StatelessWidget {
                         style: themeContext.textTheme.bodyMedium,
                       ),
                       TextField(
+                        obscureText: true,
+
                         decoration: InputDecoration(
                           hintText: "Create your password",
                           prefixIconConstraints: BoxConstraints(
@@ -161,12 +189,14 @@ class RegisterScreen extends StatelessWidget {
                         style: themeContext.textTheme.bodyMedium,
                       ),
                       TextField(
+                        obscureText: true,
                         decoration: InputDecoration(
                           prefixIconConstraints: BoxConstraints(
                             minWidth: 30.w,
                             minHeight: 0,
                           ),
                           hintText: "Enter your password",
+
                           prefixIcon: Padding(
                             padding: EdgeInsets.only(left: 12.w, right: 1.w),
 
@@ -245,15 +275,22 @@ class RegisterScreen extends StatelessWidget {
 
                   16.verticalSpace,
                   ElevatedButton(
-                    onPressed: () {
-                      Get.toNamed("/auth/verify-mail");
-                    },
-                    child: Text(
-                      "Create Account",
-                      // style: themeContext.textTheme.bodyLarge?.copyWith(
-                      //   color: Colors.white,
-                      // ),
-                    ),
+                    onPressed: () => register(),
+                    child: isLoading
+                        ? SizedBox(
+                            width: 20.w,
+                            height: 20.h,
+                            child: const CircularProgressIndicator(
+                              strokeWidth: 2,
+                              color: Colors.white,
+                            ),
+                          )
+                        : Text(
+                            "Create Account",
+                            // style: themeContext.textTheme.bodyLarge?.copyWith(
+                            //   color: Colors.white,
+                            // ),
+                          ),
                   ),
                 ],
               ),

@@ -19,16 +19,6 @@ class Select extends StatefulWidget {
 }
 
 class _SelectState extends State<Select> {
-  final List<String> items = [
-    "Housing",
-    "Utility",
-    "Savings",
-    "Subscription",
-    "Insurance",
-    "Loan",
-    "Other",
-  ];
-
   String? selectedItems = "Subscription";
 
   @override
@@ -46,7 +36,7 @@ class _SelectState extends State<Select> {
               BlendMode.srcIn,
             ),
           ),
-          items: items
+          items: widget.items
               .map(
                 (item) =>
                     DropdownMenuItem<String>(value: item, child: Text(item)),

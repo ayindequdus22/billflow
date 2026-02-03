@@ -6,7 +6,10 @@ class AppColorScheme {
   final Color supportLight = Color.fromRGBO(238, 231, 248, 1);
   final Color supportMain = Color.fromRGBO(106, 77, 160, 1);
   final Color disableTextColor = Color.fromRGBO(148, 163, 184, 1);
+
   final Color success = Color.fromRGBO(22, 163, 74, 1);
+  final Color successBorder = Color.fromRGBO(74, 222, 128, 1);
+  final Color successLight = Color.fromRGBO(238, 253, 243, 1);
 
   static final Color _primary = Color.fromRGBO(26, 115, 232, 1);
 
@@ -31,6 +34,10 @@ class AppColorScheme {
     outline: Color.fromRGBO(226, 232, 240, 1),
 
     surfaceBright: Color.fromRGBO(255, 255, 255, 1), // White for cards/dialogs
+    error: Color.fromRGBO(220, 38, 38, 1), //error text
+    errorContainer: Color.fromRGBO(254, 226, 226, 1), //error bg
+
+    onErrorContainer: Color.fromRGBO(252, 165, 165, 1), // error border
   );
 
   static ColorScheme darkColorScheme = ColorScheme.dark(

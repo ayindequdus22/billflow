@@ -3,11 +3,37 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 
-class LoginScreen extends StatelessWidget {
+class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
 
   @override
+  State<LoginScreen> createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
+  bool isLoading = false;
+   Future<void> login() async {
+      setState(() {
+        isLoading = true;
+      });
+
+      try {
+        // Simulate a network call
+        await Future.delayed(const Duration(seconds: 2));
+        // Get.offAllNamed("/auth/verify-mail");
+        // verification logic here
+      } catch (e) {
+        // handle error if needed
+      } finally {
+        setState(() {
+          isLoading = false;
+        });
+      }
+    }
+
+  @override
   Widget build(BuildContext context) {
+ 
     final themeContext = Theme.of(context);
     return Scaffold(
       resizeToAvoidBottomInset: true,
@@ -89,6 +115,7 @@ class LoginScreen extends StatelessWidget {
                         style: themeContext.textTheme.bodyMedium,
                       ),
                       TextField(
+                        obscureText: true,
                         decoration: InputDecoration(
                           hintText: "Enter your password",
                           prefixIconConstraints: BoxConstraints(
@@ -113,7 +140,19 @@ class LoginScreen extends StatelessWidget {
                   ),
                   TextButton(onPressed: () {}, child: Text("Forgot Password?")),
                   8.verticalSpace,
-                  ElevatedButton(onPressed: () {}, child: Text("Login")),
+                  ElevatedButton(
+                    onPressed: () => login(),
+                    child: isLoading
+                        ? SizedBox(
+                            width: 20.w,
+                            height: 20.h,
+                            child: const CircularProgressIndicator(
+                              strokeWidth: 2,
+                              color: Colors.white,
+                            ),
+                          )
+                        : Text("Login"),
+                  ),
                 ],
               ),
             ),
