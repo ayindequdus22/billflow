@@ -11,6 +11,14 @@ class AppColorScheme {
   final Color successBorder = Color.fromRGBO(74, 222, 128, 1);
   final Color successLight = Color.fromRGBO(238, 253, 243, 1);
 
+  final Color dangerLight = Color.fromRGBO(254, 226, 226, 1);
+  final Color danger = Color.fromRGBO(220, 38, 38, 1);
+  final Color dangerBorder = Color.fromRGBO(252, 165, 165, 1);
+
+  final Color warning = Color.fromRGBO(245, 158, 11, 1);
+  final Color warningBorder = Color.fromRGBO(253, 230, 138, 1);
+  final Color warningLight = Color.fromRGBO(254, 243, 199, 1);
+
   static final Color _primary = Color.fromRGBO(26, 115, 232, 1);
 
   static final Color _primaryVariant = Color.fromRGBO(232, 241, 255, 1);
