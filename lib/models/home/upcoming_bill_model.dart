@@ -83,19 +83,25 @@ enum BillFrequency {
 }
 
 class BillModel {
+  final String id;
   final String title;
   final double amount;
   final DateTime dueDate;
   final BillCategory category;
   final BillFrequency frequency;
+  final String iconPath;
+  final BillStatus status;
 
   BillModel({
+    String? id,
+    required this.iconPath,
     required this.title,
+    required this.status,
     required this.amount,
     required this.dueDate,
     required this.category,
     required this.frequency,
-  });
+  }): id = id ?? UniqueKey().toString();
   // Calculate days until due
   int get daysUntilDue {
     final now = DateTime.now();
@@ -131,5 +137,65 @@ class BillModel {
   // Format amount with currency
   String get formattedAmount {
     return '₦${amount.toStringAsFixed(0).replaceAllMapped(RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))'), (Match m) => '${m[1]},')}';
+  }
+
+  // Convert to JSON
+  Map<String, dynamic> toJson() {
+    return {
+      // 'id': id,
+      'title': title,
+      'iconPath': iconPath,
+      'category': category.name,
+      'amount': amount,
+      'frequency': frequency.name,
+      'dueDate': dueDate.toIso8601String(),
+      'status': status.name,
+    };
+  }
+
+  // Copy with method
+  BillModel copyWith({
+    String? id,
+    String? title,
+    String? iconPath,
+    // IconData? iconData,
+    BillCategory? category,
+    double? amount,
+    BillFrequency? frequency,
+    DateTime? dueDate,
+    BillStatus? status,
+  }) {
+    return BillModel(
+      // id: id ?? this.id,
+      title: title ?? this.title,
+      iconPath: iconPath ?? this.iconPath,
+      category: category ?? this.category,
+      amount: amount ?? this.amount,
+      frequency: frequency ?? this.frequency,
+      dueDate: dueDate ?? this.dueDate,
+      status: status ?? this.status,
+    );
+  }
+
+  // Create from JSON
+  factory BillModel.fromJson(Map<String, dynamic> json) {
+    return BillModel(
+      iconPath: json['iconPath'],
+      title: json['title'],
+      category: BillCategory.values.firstWhere(
+        (e) => e.name == json['category'],
+        orElse: () => BillCategory.utility,
+      ),
+      amount: (json['amount'] as num).toDouble(),
+      frequency: BillFrequency.values.firstWhere(
+        (e) => e.name == json['frequency'],
+        orElse: () => BillFrequency.monthly,
+      ),
+      dueDate: DateTime.parse(json['dueDate']),
+      status: BillStatus.values.firstWhere(
+        (e) => e.name == json['status'],
+        orElse: () => BillStatus.upcoming,
+      ),
+    );
   }
 }
