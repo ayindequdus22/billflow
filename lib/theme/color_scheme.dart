@@ -19,6 +19,21 @@ class AppColorScheme {
   final Color warningBorder = Color.fromRGBO(253, 230, 138, 1);
   final Color warningLight = Color.fromRGBO(254, 243, 199, 1);
 
+  final Color utility = Color.fromRGBO(14, 165, 233, 1);
+  final Color utilityLight = Color.fromRGBO(224, 247, 255, 1);
+
+  final Color subscription = Color.fromRGBO(139, 92, 246, 1);
+  final Color subscriptionLight = Color.fromRGBO(243, 232, 255, 1);
+
+  final Color savings = Color.fromRGBO(0, 132, 42, 1);
+  final Color savingsLight = Color.fromRGBO(209, 250, 229, 1);
+
+  final Color housing = Color.fromRGBO(217, 119, 6, 1);
+  final Color housingLight = Color.fromRGBO(254, 243, 199, 1);
+
+  final Color insuranceLight = Color.fromRGBO(226, 232, 240, 1);
+  final Color insurance = Color.fromRGBO(71, 85, 105, 1);
+
   static final Color _primary = Color.fromRGBO(26, 115, 232, 1);
 
   static final Color _primaryVariant = Color.fromRGBO(232, 241, 255, 1);

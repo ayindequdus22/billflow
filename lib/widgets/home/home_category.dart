@@ -22,31 +22,31 @@ class HomeCategoryBillModel {
   });
 }
 
-final AppColorScheme appColorScheme = AppColorScheme();
+final AppColorScheme _appColorScheme = AppColorScheme();
 List<HomeCategoryBillModel> homeCategoryBillModel = [
   HomeCategoryBillModel(
     title: "Paid This Month",
     svgIcon: "assets/icons/check.svg",
     number: "₦108,000",
-    textColor: appColorScheme.success,
-    borderColor: appColorScheme.successBorder,
-    containerColor: appColorScheme.successLight,
+    textColor: _appColorScheme.success,
+    borderColor: _appColorScheme.successBorder,
+    containerColor: _appColorScheme.successLight,
   ),
   HomeCategoryBillModel(
     title: "Overdue",
     svgIcon: "assets/icons/alert.svg",
     number: "₦34,000",
-    textColor: appColorScheme.danger,
-    borderColor: appColorScheme.dangerBorder,
-    containerColor: appColorScheme.dangerLight,
+    textColor: _appColorScheme.danger,
+    borderColor: _appColorScheme.dangerBorder,
+    containerColor: _appColorScheme.dangerLight,
   ),
   HomeCategoryBillModel(
     title: "Due Next Month",
     svgIcon: "assets/icons/date-time.svg",
     number: "₦483,000",
-    textColor: appColorScheme.warning,
-    borderColor: appColorScheme.warningBorder,
-    containerColor: appColorScheme.warningLight,
+    textColor: _appColorScheme.warning,
+    borderColor: _appColorScheme.warningBorder,
+    containerColor: _appColorScheme.warningLight,
   ),
 ];
 
@@ -57,11 +57,10 @@ class HomeCategory extends StatelessWidget {
   Widget build(BuildContext context) {
     final themeContext = Theme.of(context);
 
-    return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 10.r),
+    return Container(
+      margin: EdgeInsets.symmetric(horizontal: 10.r, vertical: 20.h),
       child: Column(
         children: [
-          20.verticalSpace,
           SizedBox(
             height: 140.h,
             child: ListView.separated(
