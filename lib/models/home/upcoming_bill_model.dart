@@ -101,7 +101,7 @@ class BillModel {
     required this.dueDate,
     required this.category,
     required this.frequency,
-  }): id = id ?? UniqueKey().toString();
+  }) : id = id ?? UniqueKey().toString();
   // Calculate days until due
   int get daysUntilDue {
     final now = DateTime.now();
@@ -199,3 +199,34 @@ class BillModel {
     );
   }
 }
+
+List<BillModel> bills = [
+  BillModel(
+    iconPath: "assets/images/electricity.png",
+    title: "Internet",
+    category: BillCategory.utility,
+    amount: 15000,
+    frequency: BillFrequency.monthly,
+    dueDate: DateTime.now().add(Duration(days: 5)),
+    status: BillStatus.upcoming,
+  ),
+  BillModel(
+    iconPath: "assets/images/netflix.png",
+    title: "Netflix",
+    category: BillCategory.subscription,
+    amount: 5000,
+    frequency: BillFrequency.monthly,
+    dueDate: DateTime.now().add(Duration(days: 2)),
+    status: BillStatus.upcoming,
+  ),
+
+  BillModel(
+    iconPath: "assets/images/electricity.png",
+    title: "Electricity",
+    category: BillCategory.utility,
+    amount: 15000,
+    frequency: BillFrequency.monthly,
+    dueDate: DateTime.now().add(const Duration(days: 5)),
+    status: BillStatus.upcoming,
+  ),
+];
