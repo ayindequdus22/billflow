@@ -202,7 +202,7 @@ class BillModel {
 
 List<BillModel> bills = [
   BillModel(
-    iconPath: "assets/images/electricity.png",
+    iconPath: "assets/images/internet.png",
     title: "Internet",
     category: BillCategory.utility,
     amount: 15000,
