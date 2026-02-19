@@ -1,4 +1,5 @@
 import 'package:billflow/models/home/upcoming_bill_model.dart';
+import 'package:billflow/widgets/home/bill_item.dart';
 import 'package:billflow/widgets/home/home_category.dart';
 import 'package:billflow/widgets/home/home_sliver.dart';
 import 'package:flutter/material.dart';
@@ -28,7 +29,7 @@ class HomeScreen extends StatelessWidget {
 
               decoration: BoxDecoration(
                 color: Theme.of(context).colorScheme.errorContainer,
-                borderRadius: BorderRadius.circular(10.r),
+                borderRadius: BorderRadius.circular(16.r),
                 border: Border.all(
                   color: Theme.of(context).colorScheme.onErrorContainer,
                 ),
@@ -69,10 +70,7 @@ class HomeScreen extends StatelessWidget {
               ),
             ),
           ),
-
-          SliverToBoxAdapter(
-            child: HomeUpcomingBills(themeContext: themeContext),
-          ),
+          HomeUpcomingBills(themeContext: themeContext),
         ],
       ),
     );
@@ -86,14 +84,13 @@ class HomeUpcomingBills extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.symmetric(horizontal: 10.r, vertical: 20.h),
-
-      child: Column(
-        children: [
+    return SliverPadding(
+      padding: EdgeInsets.symmetric(horizontal: 10.r, vertical: 20.h),
+      sliver: SliverList(
+        delegate: SliverChildListDelegate([
+          // Header
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Text(
                 "Upcoming Bills",
@@ -110,113 +107,13 @@ class HomeUpcomingBills extends StatelessWidget {
               ),
             ],
           ),
-          Column(
-            children: [
-              SizedBox(
-                height: 400.h,
-                child: ListView.builder(
-                  itemCount: bills.length,
-                  itemBuilder: (context, index) {
-                    return Container(
-                      margin: EdgeInsets.only(bottom: 12.h),
 
-                      padding: EdgeInsets.symmetric(
-                        horizontal: 12.r,
-                        vertical: 14.h,
-                      ),
-                      decoration: BoxDecoration(
-                        color: themeContext.colorScheme.surfaceBright,
-                        borderRadius: BorderRadius.circular(12.r),
-                        border: Border.all(
-                          color: themeContext.colorScheme.outline,
-                        ),
-                      ),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Row(
-                            children: [
-                              Image.asset(
-                                bills[index].iconPath,
-                                width: 40.w,
-                                height: 40.h,
-                              ),
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    bills[index].title,
-                                    style: themeContext.textTheme.bodyLarge,
-                                  ),
-                                  Row(
-                                    spacing: 8.w,
-                                    children: [
-                                      Container(
-                                        padding: EdgeInsets.symmetric(
-                                          horizontal: 8.w,
-                                          vertical: 3.h,
-                                        ),
-                                        decoration: BoxDecoration(
-                                          color: bills[index].category.color[1],
-                                          borderRadius: BorderRadius.circular(
-                                            40.r,
-                                          ),
-                                        ),
-                                        child: Text(
-                                          bills[index].category.displayName,
-                                          style: themeContext
-                                              .textTheme
-                                              .bodyMedium
-                                              ?.copyWith(
-                                                color: bills[index]
-                                                    .category
-                                                    .color[0],
-                                              ),
-                                        ),
-                                      ),
-                                      Text(
-                                        bills[index].dueDateString,
-                                        style: themeContext.textTheme.bodyMedium
-                                            ?.copyWith(
-                                              color: themeContext
-                                                  .colorScheme
-                                                  .onSurfaceVariant,
-                                            ),
-                                      ),
-                                    ],
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
-
-                          Column(
-                            children: [
-                              Text(
-                                bills[index].formattedAmount,
-                                style: themeContext.textTheme.bodyLarge,
-                              ),
-                              Text(
-                                bills[index].frequency.displayName,
-                                style: themeContext.textTheme.bodyMedium!
-                                    .copyWith(
-                                      color: themeContext
-                                          .colorScheme
-                                          .surfaceContainer,
-                                    ),
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
-                    );
-                  },
-                ),
-              ),
-            ],
+          // Bills
+          ...List.generate(
+            bills.length,
+            (index) => BillItem(bill: bills[index], themeContext: themeContext),
           ),
-        ],
+        ]),
       ),
     );
   }

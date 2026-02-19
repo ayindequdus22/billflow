@@ -93,7 +93,7 @@ class BillModel {
   final BillFrequency frequency;
   final String iconPath;
   final BillStatus status;
-static const int warningDays = 3;
+  static const int warningDays = 3;
 
   BillModel({
     String? id,
@@ -122,14 +122,17 @@ static const int warningDays = 3;
   bool get isOverdue => daysUntilDue < 0;
 
   // Get formatted due date string
-String get dueDateString {
-  if (isOverdue) return 'Overdue by ${daysUntilDue.abs()} day${daysUntilDue.abs() != 1 ? 's' : ''}';
-  if (daysUntilDue == 0) return 'Due today';
-  if (daysUntilDue == 1) return 'Due tomorrow';
-  if (daysUntilDue <= 7) return 'Due in $daysUntilDue day${daysUntilDue != 1 ? 's' : ''}';
-  return DateFormat.MMMd().format(DateTime.parse(dueDate));
-}
-
+  String get dueDateString {
+    if (isOverdue) {
+      return 'Overdue by ${daysUntilDue.abs()} day${daysUntilDue.abs() != 1 ? 's' : ''}';
+    }
+    if (daysUntilDue == 0) return 'Due today';
+    if (daysUntilDue == 1) return 'Due tomorrow';
+    if (daysUntilDue <= 7) {
+      return 'Due in $daysUntilDue day${daysUntilDue != 1 ? 's' : ''}';
+    }
+    return DateFormat.MMMd().format(DateTime.parse(dueDate));
+  }
 
   // Get color based on due date
   Color getDueDateColor(BuildContext context) {
@@ -216,6 +219,15 @@ String get dueDateString {
 
 List<BillModel> bills = [
   BillModel(
+    iconPath: "assets/images/electricity.png",
+    title: "Electricity",
+    category: BillCategory.utility,
+    amount: 15000,
+    frequency: BillFrequency.monthly,
+    dueDate: "2026-02-14T03:40:00.123Z",
+    status: BillStatus.overdue,
+  ),
+  BillModel(
     iconPath: "assets/images/internet.png",
     title: "Internet",
     category: BillCategory.utility,
@@ -236,11 +248,44 @@ List<BillModel> bills = [
 
   BillModel(
     iconPath: "assets/images/electricity.png",
-    title: "Electricity",
+    title: "Zonal",
     category: BillCategory.utility,
     amount: 15000,
     frequency: BillFrequency.monthly,
-    dueDate: "2026-02-14T03:40:00.123Z",
+    dueDate: "2026-02-20T03:40:00.123Z",
+    status: BillStatus.upcoming,
+  ),
+  
+  BillModel(
+    iconPath: "assets/images/electricity.png",
+    title: "Zonal",
+    category: BillCategory.utility,
+    amount: 15000,
+    frequency: BillFrequency.monthly,
+    dueDate: "2026-02-20T03:40:00.123Z",
+    status: BillStatus.upcoming,
+  ),
+  
+  BillModel(
+    iconPath: "assets/images/electricity.png",
+    title: "Zonal",
+    category: BillCategory.utility,
+    amount: 15000,
+    frequency: BillFrequency.monthly,
+    dueDate: "2026-02-20T03:40:00.123Z",
+    status: BillStatus.upcoming,
+  ),
+
+
+
+  
+  BillModel(
+    iconPath: "assets/images/electricity.png",
+    title: "Zonal",
+    category: BillCategory.utility,
+    amount: 15000,
+    frequency: BillFrequency.monthly,
+    dueDate: "2026-02-20T03:40:00.123Z",
     status: BillStatus.upcoming,
   ),
   BillModel(
@@ -249,7 +294,25 @@ List<BillModel> bills = [
     category: BillCategory.utility,
     amount: 15000,
     frequency: BillFrequency.monthly,
-    dueDate: "2026-02-19T03:40:00.123Z",
+    dueDate: "2026-02-20T03:40:00.123Z",
+    status: BillStatus.upcoming,
+  ),
+  BillModel(
+    iconPath: "assets/images/electricity.png",
+    title: "Zonal",
+    category: BillCategory.utility,
+    amount: 15000,
+    frequency: BillFrequency.monthly,
+    dueDate: "2026-02-20T03:40:00.123Z",
+    status: BillStatus.upcoming,
+  ),
+  BillModel(
+    iconPath: "assets/images/electricity.png",
+    title: "Zonal",
+    category: BillCategory.utility,
+    amount: 15000,
+    frequency: BillFrequency.monthly,
+    dueDate: "2026-02-20T03:40:00.123Z",
     status: BillStatus.upcoming,
   ),
 ];

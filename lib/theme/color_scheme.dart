@@ -57,6 +57,7 @@ class AppColorScheme {
     outline: Color.fromRGBO(226, 232, 240, 1),
 
     surfaceBright: Color.fromRGBO(255, 255, 255, 1), // White for cards/dialogs
+
     error: Color.fromRGBO(220, 38, 38, 1), //error text
     errorContainer: Color.fromRGBO(254, 226, 226, 1), //error bg
 
@@ -83,5 +84,10 @@ class AppColorScheme {
 
     outline: Color.fromRGBO(41, 50, 65, 1), // Darker borders
     onPrimary: Colors.white,
+
+    error: Color.fromRGBO(220, 38, 38, 1), //error text
+    errorContainer: Color.fromRGBO(254, 226, 226, 1), //error bg
+
+    onErrorContainer: Color.fromRGBO(252, 165, 165, 1), // error border
   );
 }
