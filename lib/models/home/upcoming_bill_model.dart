@@ -1,5 +1,6 @@
 import 'package:billflow/theme/color_scheme.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 final AppColorScheme colorScheme = AppColorScheme();
 
@@ -86,11 +87,13 @@ class BillModel {
   final String id;
   final String title;
   final double amount;
-  final DateTime dueDate;
+  //iso String
+  final String dueDate;
   final BillCategory category;
   final BillFrequency frequency;
   final String iconPath;
   final BillStatus status;
+static const int warningDays = 3;
 
   BillModel({
     String? id,
@@ -104,30 +107,35 @@ class BillModel {
   }) : id = id ?? UniqueKey().toString();
   // Calculate days until due
   int get daysUntilDue {
+    final parsedDueDate = DateTime.parse(dueDate).toLocal();
     final now = DateTime.now();
-    final difference = dueDate.difference(now);
-    return difference.inDays;
+    final today = DateTime(now.year, now.month, now.day);
+    final due = DateTime(
+      parsedDueDate.year,
+      parsedDueDate.month,
+      parsedDueDate.day,
+    );
+    return due.difference(today).inDays;
   }
 
   // Check if bill is overdue
   bool get isOverdue => daysUntilDue < 0;
 
   // Get formatted due date string
-  String get dueDateString {
-    if (isOverdue) {
-      return 'Overdue by ${daysUntilDue.abs()} day${daysUntilDue.abs() != 1 ? 's' : ''}';
-    } else if (daysUntilDue == 0) {
-      return 'Due today';
-    } else {
-      return 'Due in $daysUntilDue day${daysUntilDue != 1 ? 's' : ''}';
-    }
-  }
+String get dueDateString {
+  if (isOverdue) return 'Overdue by ${daysUntilDue.abs()} day${daysUntilDue.abs() != 1 ? 's' : ''}';
+  if (daysUntilDue == 0) return 'Due today';
+  if (daysUntilDue == 1) return 'Due tomorrow';
+  if (daysUntilDue <= 7) return 'Due in $daysUntilDue day${daysUntilDue != 1 ? 's' : ''}';
+  return DateFormat.MMMd().format(DateTime.parse(dueDate));
+}
+
 
   // Get color based on due date
   Color getDueDateColor(BuildContext context) {
     if (isOverdue) {
       return Theme.of(context).colorScheme.error;
-    } else if (daysUntilDue <= 3) {
+    } else if (daysUntilDue <= warningDays) {
       return colorScheme.warning;
     } else {
       return Colors.grey;
@@ -135,8 +143,14 @@ class BillModel {
   }
 
   // Format amount with currency
+
   String get formattedAmount {
-    return '₦${amount.toStringAsFixed(0).replaceAllMapped(RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))'), (Match m) => '${m[1]},')}';
+    final formatter = NumberFormat.currency(
+      locale: 'en_NG',
+      symbol: '₦',
+      decimalDigits: 0,
+    );
+    return formatter.format(amount);
   }
 
   // Convert to JSON
@@ -148,7 +162,7 @@ class BillModel {
       'category': category.name,
       'amount': amount,
       'frequency': frequency.name,
-      'dueDate': dueDate.toIso8601String(),
+      'dueDate': dueDate.toString(),
       'status': status.name,
     };
   }
@@ -162,7 +176,7 @@ class BillModel {
     BillCategory? category,
     double? amount,
     BillFrequency? frequency,
-    DateTime? dueDate,
+    String? dueDate,
     BillStatus? status,
   }) {
     return BillModel(
@@ -191,7 +205,7 @@ class BillModel {
         (e) => e.name == json['frequency'],
         orElse: () => BillFrequency.monthly,
       ),
-      dueDate: DateTime.parse(json['dueDate']),
+      dueDate: json['dueDate'],
       status: BillStatus.values.firstWhere(
         (e) => e.name == json['status'],
         orElse: () => BillStatus.upcoming,
@@ -207,7 +221,7 @@ List<BillModel> bills = [
     category: BillCategory.utility,
     amount: 15000,
     frequency: BillFrequency.monthly,
-    dueDate: DateTime.now().add(Duration(days: 5)),
+    dueDate: "2026-02-28T03:40:00.123Z",
     status: BillStatus.upcoming,
   ),
   BillModel(
@@ -216,7 +230,7 @@ List<BillModel> bills = [
     category: BillCategory.subscription,
     amount: 5000,
     frequency: BillFrequency.monthly,
-    dueDate: DateTime.now().add(Duration(days: 2)),
+    dueDate: "2026-03-09T03:40:00.123Z",
     status: BillStatus.upcoming,
   ),
 
@@ -226,7 +240,16 @@ List<BillModel> bills = [
     category: BillCategory.utility,
     amount: 15000,
     frequency: BillFrequency.monthly,
-    dueDate: DateTime.now().add(const Duration(days: 5)),
+    dueDate: "2026-02-14T03:40:00.123Z",
+    status: BillStatus.upcoming,
+  ),
+  BillModel(
+    iconPath: "assets/images/electricity.png",
+    title: "Zonal",
+    category: BillCategory.utility,
+    amount: 15000,
+    frequency: BillFrequency.monthly,
+    dueDate: "2026-02-19T03:40:00.123Z",
     status: BillStatus.upcoming,
   ),
 ];
