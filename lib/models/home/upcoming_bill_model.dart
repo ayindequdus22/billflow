@@ -93,7 +93,7 @@ class BillModel {
   final BillFrequency frequency;
   final String iconPath;
   final BillStatus status;
-  static const int warningDays = 3;
+  static const int warningDays = 5;
 
   BillModel({
     String? id,
