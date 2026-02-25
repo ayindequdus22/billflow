@@ -1,80 +1,119 @@
 import 'package:flutter/material.dart';
+import 'package:billflow/widgets/home/home_category.dart';
+import 'package:billflow/widgets/home/home_appbar_sliver.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:billflow/models/home/upcoming_bill_model.dart';
+import 'package:billflow/widgets/home/bill_item.dart';
 
-class HomeSliverAppBarDelegate extends SliverPersistentHeaderDelegate {
-  final double maxHeaderHeight = 150.h;
-  final double minHeaderHeight = 100.h;
-
-  @override
-  double get maxExtent => maxHeaderHeight;
-
-  @override
-  double get minExtent => minHeaderHeight;
+class HomeSliver extends StatelessWidget {
+  const HomeSliver({super.key});
 
   @override
-  bool shouldRebuild(covariant HomeSliverAppBarDelegate oldDelegate) => false;
-
-  @override
-  Widget build(
-    BuildContext context,
-    double shrinkOffset,
-    bool overlapsContent,
-  ) {
-    final theme = Theme.of(context);
-
-    // Progress between 0 (min) and 1 (max)
-    final progress = (shrinkOffset / (maxExtent - minExtent)).clamp(0.0, 1.0);
-
-    return Container(
-      decoration: BoxDecoration(
-        color: theme.colorScheme.primary,
-        borderRadius: BorderRadius.only(
-          bottomLeft: Radius.circular(48.r),
-          bottomRight: Radius.circular(48.r),
+  Widget build(BuildContext context) {
+    final ThemeData themeContext = Theme.of(context);
+    return CustomScrollView(
+      slivers: [
+        SliverPersistentHeader(
+          delegate: HomeSliverAppBarDelegate(),
+          pinned: true,
         ),
-      ),
-      child: SafeArea(
-        bottom: false,
-        child: SizedBox(
-          child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 8.h),
-            child: Stack(
-              clipBehavior: Clip.none,
+
+        SliverToBoxAdapter(child: HomeCategory()),
+
+        SliverToBoxAdapter(
+          child: Container(
+            margin: EdgeInsets.symmetric(horizontal: 10.r),
+            padding: EdgeInsets.symmetric(horizontal: 10.r, vertical: 16.h),
+
+            decoration: BoxDecoration(
+              color: Theme.of(context).colorScheme.errorContainer,
+              borderRadius: BorderRadius.circular(16.r),
+              border: Border.all(
+                color: Theme.of(context).colorScheme.onErrorContainer,
+              ),
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Align(
-                  alignment: Alignment.centerLeft,
-                  child: Text(
-                    "Hello Anteqs,",
-                    style: theme.textTheme.headlineLarge?.copyWith(
-                      color: Colors.white,
-                    ),
+                SvgPicture.asset(
+                  "assets/icons/alert.svg",
+                  width: 30.w,
+                  colorFilter: ColorFilter.mode(
+                    themeContext.colorScheme.error,
+                    BlendMode.srcIn,
                   ),
                 ),
-
-                // Subtitle — floats & disappears
-                Positioned(
-                  bottom: 5.h,
-                  // top: ,
-                  // bottom: 0,
-                  child: Opacity(
-                    opacity: 1 - progress,
-                    child: Transform.translate(
-                      offset: Offset(0, 12 * progress),
-                      child: Text(
-                        "Here's your financial overview",
-                        style: theme.textTheme.bodyLarge?.copyWith(
-                          color: Colors.white,
-                          fontWeight: FontWeight.w500,
+                8.horizontalSpace,
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        "1 bill overdue",
+                        style: themeContext.textTheme.bodyLarge?.copyWith(
+                          color: themeContext.colorScheme.error,
                         ),
                       ),
-                    ),
+                      Text(
+                        "Please review and mark as paid to stay on track",
+                        style: themeContext.textTheme.bodyMedium?.copyWith(
+                          color: themeContext.colorScheme.error,
+                        ),
+                      ),
+                    ],
                   ),
                 ),
               ],
             ),
           ),
         ),
+        SliverToBoxAdapter(child: _buildHeader(themeContext)),
+        HomeUpcomingBills(themeContext: themeContext),
+      ],
+    );
+  }
+}
+
+class HomeUpcomingBills extends StatelessWidget {
+  const HomeUpcomingBills({super.key, required this.themeContext});
+
+  final ThemeData themeContext;
+
+  @override
+  Widget build(BuildContext context) {
+    return SliverPadding(
+      padding: EdgeInsets.symmetric(horizontal: 10.r),
+      sliver: SliverList(
+        delegate: SliverChildBuilderDelegate(
+          childCount: bills.length > 3 ? 3 : bills.length,
+          (context, index) {
+            return BillItem(bill: bills[index], themeContext: themeContext);
+          },
+        ),
       ),
     );
   }
+}
+
+Container _buildHeader(ThemeData themeContext) {
+  return Container(
+    margin: EdgeInsets.only(left: 10.r, right: 10.r, top: 20.h),
+    child: Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Text("Upcoming Bills", style: themeContext.textTheme.headlineLarge),
+        TextButton(
+          onPressed: () {},
+          child: Text(
+            "View All",
+            style: themeContext.textTheme.bodyLarge!.copyWith(
+              color: themeContext.colorScheme.primary,
+            ),
+          ),
+        ),
+      ],
+    ),
+  );
 }
