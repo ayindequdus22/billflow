@@ -3,6 +3,8 @@ import 'package:billflow/screens/history/history.dart';
 import 'package:billflow/screens/settings/Settings.dart';
 import 'package:billflow/widgets/home/home_sliver.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/svg.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -18,16 +20,56 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: IndexedStack(index: _selectedIndex, children: _screens),
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: _selectedIndex,
-        onTap: (index) => setState(() => _selectedIndex = index),
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-          BottomNavigationBarItem(icon: Icon(Icons.history), label: 'History'),
-          BottomNavigationBarItem(icon: Icon(Icons.history), label: 'Bills'),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.settings),
-            label: 'Settings',
+      bottomNavigationBar: Container(
+        height: 80.h,
+        alignment: Alignment.center,
+        // padding: EdgeInsets.symmetric(vertical: 15.r),
+        color: Theme.of(context).colorScheme.surfaceBright,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            buildBottomIcon("Home", "assets/icons/home.svg", index: 0),
+            buildBottomIcon("Bills", "assets/icons/bill.svg", index: 1),
+            buildBottomIcon("History", "assets/icons/history.svg", index: 2),
+            buildBottomIcon("Settings", "assets/icons/setting.svg", index: 3),
+          ],
+        ),
+      ),
+    );
+  }
+
+  InkWell buildBottomIcon(String title, String iconPath, {required int index}) {
+    final themeContext = Theme.of(context);
+    final isSelected = index == _selectedIndex;
+    return InkWell(
+      onTap: () {
+        setState(() {
+          _selectedIndex = index;
+        });
+      },
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        spacing: 8.r,
+        children: [
+          SvgPicture.asset(
+            iconPath,
+            height: 24.h,
+            width: 24.h,
+            colorFilter: ColorFilter.mode(
+              isSelected
+                  ? themeContext.colorScheme.primary
+                  : themeContext.colorScheme.surfaceContainer,
+              BlendMode.srcIn,
+            ),
+          ),
+          Text(
+            title,
+            style: themeContext.textTheme.bodyMedium!.copyWith(
+              color: isSelected
+                  ? themeContext.colorScheme.primary
+                  : themeContext.colorScheme.surfaceContainer,
+            ),
           ),
         ],
       ),
