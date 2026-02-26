@@ -22,12 +22,9 @@ class _HomeScreenState extends State<HomeScreen> {
       body: IndexedStack(index: _selectedIndex, children: _screens),
       bottomNavigationBar: Container(
         height: 80.h,
-        alignment: Alignment.center,
-        // padding: EdgeInsets.symmetric(vertical: 15.r),
         color: Theme.of(context).colorScheme.surfaceBright,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
-          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             buildBottomIcon("Home", "assets/icons/home.svg", index: 0),
             buildBottomIcon("Bills", "assets/icons/bill.svg", index: 1),

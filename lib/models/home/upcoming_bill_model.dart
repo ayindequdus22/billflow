@@ -233,7 +233,7 @@ List<BillModel> bills = [
     category: BillCategory.utility,
     amount: 15000,
     frequency: BillFrequency.monthly,
-    dueDate: "2026-02-28T03:40:00.123Z",
+    dueDate: "2026-03-01T03:40:00.123Z",
     status: BillStatus.upcoming,
   ),
   BillModel(
@@ -247,56 +247,53 @@ List<BillModel> bills = [
   ),
 
   BillModel(
-    iconPath: "assets/images/electricity.png",
-    title: "Zonal",
-    category: BillCategory.utility,
-    amount: 15000,
-    frequency: BillFrequency.monthly,
-    dueDate: "2026-02-20T03:40:00.123Z",
-    status: BillStatus.upcoming,
-  ),
-  
-  BillModel(
-    iconPath: "assets/images/electricity.png",
-    title: "Zonal",
-    category: BillCategory.utility,
-    amount: 15000,
-    frequency: BillFrequency.monthly,
-    dueDate: "2026-02-20T03:40:00.123Z",
-    status: BillStatus.upcoming,
-  ),
-  
-  BillModel(
-    iconPath: "assets/images/electricity.png",
-    title: "Zonal",
-    category: BillCategory.utility,
-    amount: 15000,
-    frequency: BillFrequency.monthly,
-    dueDate: "2026-02-20T03:40:00.123Z",
+    iconPath: "assets/images/car.png",
+    title: "Car Insurance",
+    category: BillCategory.insurance,
+    amount: 40000,
+    frequency: BillFrequency.quarterly,
+    dueDate: "2026-03-22T03:40:00.123Z",
     status: BillStatus.upcoming,
   ),
 
-
-
-  
   BillModel(
-    iconPath: "assets/images/electricity.png",
-    title: "Zonal",
-    category: BillCategory.utility,
-    amount: 15000,
+    iconPath: "assets/images/music.png",
+    title: "Spotify",
+    category: BillCategory.subscription,
+    amount: 1600,
     frequency: BillFrequency.monthly,
-    dueDate: "2026-02-20T03:40:00.123Z",
+    dueDate: "2026-03-02T03:40:00.123Z",
+    status: BillStatus.upcoming,
+  ),
+
+  BillModel(
+    iconPath: "assets/images/house.png",
+    title: "Housing",
+    category: BillCategory.housing,
+    amount: 85000,
+    frequency: BillFrequency.yearly,
+    dueDate: "2026-06-20T03:40:00.123Z",
     status: BillStatus.upcoming,
   ),
   BillModel(
-    iconPath: "assets/images/electricity.png",
-    title: "Zonal",
-    category: BillCategory.utility,
-    amount: 15000,
+    iconPath: "assets/images/music.png",
+    title: "Apple",
+    category: BillCategory.subscription,
+    amount: 1200,
     frequency: BillFrequency.monthly,
-    dueDate: "2026-02-20T03:40:00.123Z",
+    dueDate: "2026-03-26T03:40:00.123Z",
     status: BillStatus.upcoming,
   ),
+  BillModel(
+    iconPath: "assets/images/piggyvest.png",
+    title: "PiggyVest",
+    category: BillCategory.savings,
+    amount: 15000,
+    frequency: BillFrequency.weekly,
+    dueDate: "2026-03-05T03:40:00.123Z",
+    status: BillStatus.upcoming,
+  ),
+
   BillModel(
     iconPath: "assets/images/electricity.png",
     title: "Zonal",

@@ -87,7 +87,7 @@ class HomeUpcomingBills extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: 10.r),
       sliver: SliverList(
         delegate: SliverChildBuilderDelegate(
-          childCount: bills.length > 3 ? 3 : bills.length,
+          childCount: bills.length > 4 ? 4 : bills.length,
           (context, index) {
             return BillItem(bill: bills[index], themeContext: themeContext);
           },
