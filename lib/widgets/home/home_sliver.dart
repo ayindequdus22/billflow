@@ -3,7 +3,7 @@ import 'package:billflow/widgets/home/home_category.dart';
 import 'package:billflow/widgets/home/home_appbar_sliver.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:billflow/models/home/upcoming_bill_model.dart';
+import 'package:billflow/models/bills/bills.dart';
 import 'package:billflow/widgets/home/bill_item.dart';
 
 class HomeSliver extends StatelessWidget {

@@ -6,9 +6,12 @@ class Select extends StatefulWidget {
   final String title;
   final String hintText;
   final List<String> items;
+  final String selectedItem;
 
   const Select({
     super.key,
+    required this.selectedItem,
+
     required this.title,
     required this.hintText,
     required this.items,
@@ -19,7 +22,7 @@ class Select extends StatefulWidget {
 }
 
 class _SelectState extends State<Select> {
-  String? selectedItems = "Subscription";
+  // String? selectedItems = "";
 
   @override
   Widget build(BuildContext context) {
@@ -44,7 +47,8 @@ class _SelectState extends State<Select> {
               .toList(),
           onChanged: (value) {
             setState(() {
-              selectedItems = value;
+              value =  widget.selectedItem;
+              // widget.selectedItem = value;
             });
           },
           decoration: InputDecoration(
@@ -56,7 +60,7 @@ class _SelectState extends State<Select> {
             ),
           ),
           validator: (value) =>
-              value == null ? "Please select a frequency" : null,
+              value == null ? "Choose ${widget.title.toLowerCase()}" : null,
         ),
       ],
     );

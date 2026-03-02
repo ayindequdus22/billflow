@@ -80,12 +80,14 @@ class _AddBillState extends State<AddBill> {
 
               DatePicker(),
               Select(
+                selectedItem: "",
                 title: "Frequency",
                 hintText: "Choose frequency",
                 items: frequency,
               ),
 
               Select(
+                selectedItem: "",
                 title: "Category",
                 hintText: "Choose category",
                 items: categories,

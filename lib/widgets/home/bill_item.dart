@@ -1,4 +1,4 @@
-import 'package:billflow/models/home/upcoming_bill_model.dart';
+import 'package:billflow/models/bills/bills.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
