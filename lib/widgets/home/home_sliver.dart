@@ -89,7 +89,7 @@ class HomeUpcomingBills extends StatelessWidget {
         delegate: SliverChildBuilderDelegate(
           childCount: bills.length > 4 ? 4 : bills.length,
           (context, index) {
-            return BillItem(bill: bills[index], themeContext: themeContext);
+            return BillItem(bill: bills[index]);
           },
         ),
       ),

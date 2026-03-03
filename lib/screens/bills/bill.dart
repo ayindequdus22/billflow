@@ -1,4 +1,5 @@
 import 'package:billflow/models/bills/bills.dart';
+import 'package:billflow/screens/bills/bill_item.dart';
 import 'package:billflow/widgets/select.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -9,7 +10,32 @@ class BillScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(children: [BillAppBar(), 20.verticalSpace, Text("riorne")]),
+      body: Column(
+        children: [
+          BillAppBar(),
+
+          Expanded(
+            child: ListView.builder(
+              padding: EdgeInsets.only(top: 10.h, right: 10.r, left: 10.r),
+              itemCount: bills.length,
+              itemBuilder: (context, index) => BillItems(bill: bills[index]),
+            ),
+          ),
+        ],
+      ),
+      floatingActionButton: SizedBox(
+        height: 70.h,
+        width: 70.w,
+        child: FloatingActionButton(
+          tooltip: "Add Bill",
+          shape: const CircleBorder(),
+          heroTag: "Add Bill",
+          backgroundColor: Theme.of(context).colorScheme.primary,
+          child: Icon(Icons.add, color: Colors.white, size: 40.h),
+          onPressed: () {},
+        ),
+        // ),
+      ),
     );
   }
 }
@@ -44,10 +70,10 @@ class _BillAppBarState extends State<BillAppBar> {
       ),
       child: SafeArea(
         child: Column(
-          spacing: 16.h,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text("Bills", style: theme.textTheme.headlineLarge),
+            16.verticalSpace,
             Column(
               children: [
                 Select(
@@ -58,6 +84,7 @@ class _BillAppBarState extends State<BillAppBar> {
                 ),
               ],
             ),
+            16.verticalSpace,
 
             SizedBox(
               height: 40.h,
@@ -65,7 +92,7 @@ class _BillAppBarState extends State<BillAppBar> {
               child: ListView.separated(
                 scrollDirection: Axis.horizontal,
                 itemCount: BillAppBar.categories.length,
-                separatorBuilder: (_, __) => SizedBox(width: 8.w),
+                separatorBuilder: (_, _) => SizedBox(width: 8.w),
                 itemBuilder: (_, index) => buildCategoryButton(
                   BillAppBar.categories[index],
                   index,
@@ -73,6 +100,7 @@ class _BillAppBarState extends State<BillAppBar> {
                 ),
               ),
             ),
+            10.verticalSpace,
           ],
         ),
       ),
@@ -95,7 +123,6 @@ class _BillAppBarState extends State<BillAppBar> {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(18.r),
         ),
-        // padding: EdgeInsets.symmetric(horizontal: 16.w),
       ),
 
       child: Text(
