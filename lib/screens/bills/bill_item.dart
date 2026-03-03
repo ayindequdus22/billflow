@@ -2,15 +2,14 @@ import 'package:billflow/models/bills/bills.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class BillItem extends StatelessWidget {
+class BillItems extends StatelessWidget {
   final BillModel bill;
 
-  const BillItem({required this.bill, super.key});
+  const BillItems({required this.bill, super.key});
 
   @override
   Widget build(BuildContext context) {
     final themeContext = Theme.of(context);
-
     return Container(
       margin: EdgeInsets.only(bottom: 12.h),
       padding: EdgeInsets.symmetric(horizontal: 12.r, vertical: 14.h),

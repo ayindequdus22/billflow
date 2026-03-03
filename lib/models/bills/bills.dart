@@ -224,7 +224,7 @@ List<BillModel> bills = [
     category: BillCategory.utility,
     amount: 15000,
     frequency: BillFrequency.monthly,
-    dueDate: "2026-02-14T03:40:00.123Z",
+    dueDate: "2026-03-14T03:40:00.123Z",
     status: BillStatus.overdue,
   ),
   BillModel(
@@ -233,7 +233,7 @@ List<BillModel> bills = [
     category: BillCategory.utility,
     amount: 15000,
     frequency: BillFrequency.monthly,
-    dueDate: "2026-03-01T03:40:00.123Z",
+    dueDate: "2026-03-04T03:40:00.123Z",
     status: BillStatus.upcoming,
   ),
   BillModel(

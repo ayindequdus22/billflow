@@ -74,7 +74,7 @@ class AppColorScheme {
     surface: Color.fromRGBO(15, 23, 42, 1),
     onSurfaceVariant: Color.fromRGBO(148, 163, 184, 1),
     surfaceContainer: Color.fromRGBO(132, 134, 150, 1), //lighter secondary
-    surfaceTint: Color.fromRGBO(30, 41, 59, 1), //elevated cards
+    surfaceTint: const Color.fromRGBO(51, 65, 85, 1), //elevated cards
     surfaceBright: Color.fromRGBO(
       30,
       41,
