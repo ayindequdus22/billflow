@@ -44,6 +44,7 @@ enum BillCategory {
 }
 
 enum BillStatus {
+
   upcoming,
   overdue,
   paid;
@@ -56,6 +57,7 @@ enum BillStatus {
         return 'Overdue';
       case BillStatus.paid:
         return 'Paid';
+      
     }
   }
 }
