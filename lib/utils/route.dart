@@ -11,44 +11,38 @@ import 'package:billflow/screens/splash.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class OnGenerateRoute {
-  static GetPage<dynamic> generateRoute(RouteSettings settings) {
-    switch (settings.name) {
-      case "/":
-        return GetPage(name: "/", page: () => const SplashScreen());
+class AppRoutes {
+  static const splash = "/";
+  static const onboarding = "/onboarding";
 
-      case "/onboarding":
-        return GetPage(
-          name: "/onboarding",
-          page: () => const OnboardingScreen(),
-        );
-      case "/auth/login":
-        return GetPage(name: "/auth/login", page: () => const LoginScreen());
-      case "/auth/register":
-        return GetPage(
-          name: "/auth/register",
-          page: () => const RegisterScreen(),
-        );
-      case "/home":
-        return GetPage(name: "/home", page: () => const HomeScreen());
-      case "/auth/verify-mail":
-        return GetPage(
-          name: "/auth/verify-mail",
-          page: () => const VerifyEmailScreen(),
-        );
-      case "/auth/verify-mail/success":
-        return GetPage(
-          name: "/auth/verify-mail/success",
-          page: () => const VerifyEmailSuccesful(),
-        );
-      case "/setup":
-        return GetPage(name: "/setup", page: () => const StartSetup());
-      case "/add-bill":
-        return GetPage(name: "/add-bill", page: () => const AddBill());
-      case "bill-details":
-        return GetPage(name: "bill-details/:id", page: () => BillDetails());
-      default:
-        return GetPage(name: "default", page: () => Container());
-    }
-  }
+  static const login = "/auth/login";
+  static const register = "/auth/register";
+
+  static const verifyMail = "/auth/verify-mail";
+  static const verifyMailSuccess = "/auth/verify-mail/success";
+
+  static const home = "/home";
+
+  static const setup = "/setup";
+  static const addBill = "/add-bill";
+
+  static const billDetails = "/bill-details/:id";
+}
+
+class AppPages {
+  static final routes = [
+    GetPage(name: AppRoutes.splash, page: () => const SplashScreen()),
+
+    GetPage(name: AppRoutes.onboarding, page: () => const OnboardingScreen()),
+
+    GetPage(name: AppRoutes.login, page: () => const LoginScreen()),
+
+    GetPage(name: AppRoutes.register, page: () => const RegisterScreen()),
+
+    GetPage(name: AppRoutes.home, page: () => const HomeScreen()),
+
+    GetPage(name: AppRoutes.addBill, page: () => const AddBill()),
+
+    GetPage(name: AppRoutes.billDetails, page: () => BillDetails()),
+  ];
 }

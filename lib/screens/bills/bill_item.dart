@@ -5,22 +5,25 @@ import 'package:get/get.dart';
 
 class BillItems extends StatelessWidget {
   final BillModel bill;
+  final int index;
 
-  const BillItems({required this.bill, super.key});
+  const BillItems({required this.bill, super.key, required this.index});
 
   @override
   Widget build(BuildContext context) {
     final themeContext = Theme.of(context);
-    return InkWell(
-      onTap: () => Get.toNamed("/bills/id=${bill.id}"),
-      child: Container(
-        margin: EdgeInsets.only(bottom: 12.h),
-        padding: EdgeInsets.symmetric(horizontal: 12.r, vertical: 14.h),
-        decoration: BoxDecoration(
-          color: themeContext.colorScheme.surfaceBright,
-          borderRadius: BorderRadius.circular(12.r),
-          border: Border.all(color: themeContext.colorScheme.outline),
-        ),
+    
+    return Container(
+      margin: EdgeInsets.only(bottom: 12.h),
+      padding: EdgeInsets.symmetric(horizontal: 12.r, vertical: 14.h),
+      decoration: BoxDecoration(
+        color: themeContext.colorScheme.surfaceBright,
+        borderRadius: BorderRadius.circular(12.r),
+        border: Border.all(color: themeContext.colorScheme.outline),
+      ),
+      child: InkWell(
+        onTap: () => Get.toNamed("/bill-details/$index"),
+
         child: Column(
           children: [
             Row(
@@ -30,8 +33,9 @@ class BillItems extends StatelessWidget {
                 Row(
                   spacing: 8.w,
                   children: [
+                    Hero(tag: "$index", child: 
                     Image.asset(bill.iconPath, width: 40.w, height: 40.h),
-
+                    ),
                     Column(
                       spacing: 4.h,
                       crossAxisAlignment: CrossAxisAlignment.start,
