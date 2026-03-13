@@ -1,4 +1,5 @@
 // import 'package:billflow/widgets/select.dart';
+import 'package:billflow/widgets/select.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -6,13 +7,13 @@ class BillAppBar extends StatelessWidget {
   const BillAppBar({
     super.key,
     required this.categories,
-    // required this.billStatus,
+    required this.billStatus,
     required this.selectedIndex,
     required this.onCategorySelected,
   });
 
   final List<String> categories;
-  // final List<String> billStatus;
+  final List<String> billStatus;
 
   final int selectedIndex;
   final ValueChanged<int> onCategorySelected;
@@ -34,12 +35,12 @@ class BillAppBar extends StatelessWidget {
             Text("Bills", style: theme.textTheme.headlineLarge),
             16.verticalSpace,
 
-            // Select(
-            //   title: "Filter By",
-            //   hintText: "All Bills",
-            //   items: billStatus,
-            //   selectedItem: billStatus[0],
-            // ),
+            Select(
+              title: "Filter By",
+              hintText: "All Bills",
+              items: billStatus,
+              selectedItem: billStatus[0],
+            ),
 
             16.verticalSpace,
 

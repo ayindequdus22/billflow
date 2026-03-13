@@ -33,7 +33,7 @@ class _BillScreenState extends State<BillScreen> {
         children: [
           BillAppBar(
             categories: categories,
-            // billStatus: billStatus,
+            billStatus: billStatus,
             selectedIndex: selectedCategoryIndex,
             onCategorySelected: (index) {
               setState(() {

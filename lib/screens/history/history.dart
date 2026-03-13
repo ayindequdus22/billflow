@@ -5,6 +5,6 @@ class History extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(body: Text("History"));
+    return const Scaffold(body: Center(child: Text("History")));
   }
 }

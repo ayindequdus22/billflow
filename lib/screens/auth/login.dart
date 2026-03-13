@@ -12,28 +12,27 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   bool isLoading = false;
-   Future<void> login() async {
-      setState(() {
-        isLoading = true;
-      });
+  Future<void> login() async {
+    setState(() {
+      isLoading = true;
+    });
 
-      try {
-        // Simulate a network call
-        await Future.delayed(const Duration(seconds: 2));
-        // Get.offAllNamed("/auth/verify-mail");
-        // verification logic here
-      } catch (e) {
-        // handle error if needed
-      } finally {
-        setState(() {
-          isLoading = false;
-        });
-      }
+    try {
+      // Simulate a network call
+      await Future.delayed(const Duration(seconds: 2));
+      Get.offAllNamed("/auth/verify-mail");
+      // verification logic here
+    } catch (e) {
+      // handle error if needed
+    } finally {
+      setState(() {
+        isLoading = false;
+      });
     }
+  }
 
   @override
   Widget build(BuildContext context) {
- 
     final themeContext = Theme.of(context);
     return Scaffold(
       resizeToAvoidBottomInset: true,
