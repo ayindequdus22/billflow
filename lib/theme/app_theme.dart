@@ -15,30 +15,27 @@ class AppTheme {
       textTheme: textTheme,
       scaffoldBackgroundColor: colorScheme.surface,
       elevatedButtonTheme: ElevatedButtonThemeData(
-        style: ButtonStyle(
-          foregroundColor: WidgetStatePropertyAll(Colors.white),
-          minimumSize: WidgetStatePropertyAll(Size(double.infinity, 50.h)),
+        style: ElevatedButton.styleFrom(
+          foregroundColor: (Colors.white),
+          minimumSize: Size.fromHeight(50),
           splashFactory: InkSparkle.splashFactory,
-          textStyle: WidgetStatePropertyAll(
-            Theme.of(
-              context,
-            ).textTheme.titleMedium!.copyWith(color: Colors.white),
-          ),
-          backgroundColor: WidgetStatePropertyAll(colorScheme.primary),
-          shape: WidgetStatePropertyAll(
-            RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.r)),
+          textStyle: Theme.of(
+            context,
+          ).textTheme.titleMedium!.copyWith(color: Colors.white),
+
+          backgroundColor: colorScheme.primary,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(10.r),
           ),
         ),
       ),
 
       textButtonTheme: TextButtonThemeData(
-        style: ButtonStyle(
-          foregroundColor: WidgetStatePropertyAll(colorScheme.primary),
-          textStyle: WidgetStatePropertyAll(
-            Theme.of(
-              context,
-            ).textTheme.bodyLarge!.copyWith(fontWeight: FontWeight.w500),
-          ),
+        style: TextButton.styleFrom(
+          foregroundColor: colorScheme.primary,
+          textStyle: Theme.of(
+            context,
+          ).textTheme.bodyLarge!.copyWith(fontWeight: FontWeight.w500),
         ),
       ),
 

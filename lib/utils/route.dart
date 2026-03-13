@@ -8,7 +8,6 @@ import 'package:billflow/screens/home/home.dart';
 import 'package:billflow/screens/onboarding.dart';
 import 'package:billflow/screens/set-up/start_setup.dart';
 import 'package:billflow/screens/splash.dart';
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class AppRoutes {
@@ -34,11 +33,16 @@ class AppPages {
     GetPage(name: AppRoutes.splash, page: () => const SplashScreen()),
 
     GetPage(name: AppRoutes.onboarding, page: () => const OnboardingScreen()),
-
     GetPage(name: AppRoutes.login, page: () => const LoginScreen()),
 
     GetPage(name: AppRoutes.register, page: () => const RegisterScreen()),
 
+    GetPage(
+      name: AppRoutes.verifyMailSuccess,
+      page: () => const VerifyEmailSuccesful(),
+    ),
+    GetPage(name: AppRoutes.verifyMail, page: () => const VerifyEmailScreen()),
+    GetPage(name: AppRoutes.setup, page: () => const StartSetup()),
     GetPage(name: AppRoutes.home, page: () => const HomeScreen()),
 
     GetPage(name: AppRoutes.addBill, page: () => const AddBill()),
