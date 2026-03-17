@@ -1,4 +1,5 @@
 // import 'package:billflow/widgets/select.dart';
+import 'package:billflow/widgets/build_category_btn.dart';
 import 'package:billflow/widgets/select.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -30,10 +31,10 @@ class BillAppBar extends StatelessWidget {
       ),
       child: SafeArea(
         child: Column(
+          spacing: 16.h,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text("Bills", style: theme.textTheme.headlineLarge),
-            16.verticalSpace,
 
             Select(
               title: "Filter By",
@@ -42,45 +43,14 @@ class BillAppBar extends StatelessWidget {
               selectedItem: billStatus[0],
             ),
 
-            16.verticalSpace,
-
-            SizedBox(
-              height: 40.h,
-              width: double.infinity,
-              child: ListView.separated(
-                scrollDirection: Axis.horizontal,
-                itemCount: categories.length,
-                separatorBuilder: (_, _) => SizedBox(width: 8.w),
-                itemBuilder: (_, index) =>
-                    _buildCategoryButton(categories[index], index, theme),
-              ),
+            BuildCategoryButton(
+              categories: categories,
+              selectedIndex: selectedIndex,
+              onCategorySelected: onCategorySelected,
+              theme: theme,
             ),
             10.verticalSpace,
           ],
-        ),
-      ),
-    );
-  }
-
-  Widget _buildCategoryButton(String title, int index, ThemeData theme) {
-    final isSelected = selectedIndex == index;
-
-    return ElevatedButton(
-      style: ElevatedButton.styleFrom(
-        elevation: 0,
-        backgroundColor: isSelected
-            ? theme.colorScheme.primary
-            : theme.colorScheme.surfaceTint,
-        minimumSize: Size(0, 30.h),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(18.r),
-        ),
-      ),
-      onPressed: () => onCategorySelected(index),
-      child: Text(
-        title,
-        style: theme.textTheme.bodyMedium?.copyWith(
-          color: isSelected ? Colors.white : null,
         ),
       ),
     );

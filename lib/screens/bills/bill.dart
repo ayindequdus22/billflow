@@ -14,17 +14,8 @@ class BillScreen extends StatefulWidget {
 
 class _BillScreenState extends State<BillScreen> {
   List<BillModel> filterBills = bills;
-  static List<String> categories = [
-    "All Categories",
-    ...BillCategory.values.map(
-      (e) => e.displayName[0].toUpperCase() + e.displayName.substring(1),
-    ),
-  ];
   int selectedCategoryIndex = 0;
-  List<String> billStatus = [
-    "All Bills",
-    ...BillStatus.values.map((e) => e.displayName),
-  ];
+ 
 
   @override
   Widget build(BuildContext context) {
@@ -32,8 +23,8 @@ class _BillScreenState extends State<BillScreen> {
       body: Column(
         children: [
           BillAppBar(
-            categories: categories,
-            billStatus: billStatus,
+            categories:BillModel.categories,
+            billStatus: BillModel.billStatus,
             selectedIndex: selectedCategoryIndex,
             onCategorySelected: (index) {
               setState(() {

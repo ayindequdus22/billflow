@@ -1,5 +1,6 @@
 import 'package:billflow/theme/color_scheme.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 
 final AppColorScheme colorScheme = AppColorScheme();
@@ -44,7 +45,6 @@ enum BillCategory {
 }
 
 enum BillStatus {
-
   upcoming,
   overdue,
   paid;
@@ -57,7 +57,6 @@ enum BillStatus {
         return 'Overdue';
       case BillStatus.paid:
         return 'Paid';
-      
     }
   }
 }
@@ -97,6 +96,16 @@ class BillModel {
   final BillStatus status;
   static const int warningDays = 5;
 
+  static List<String> categories = [
+    "All Categories",
+    ...BillCategory.values.map(
+      (e) => e.displayName.toLowerCase().capitalizeFirst!,
+    ),
+  ];
+  static List<String> billStatus = [
+    "All Bills",
+    ...BillStatus.values.map((e) => e.displayName),
+  ];
   BillModel({
     String? id,
     required this.iconPath,
