@@ -11,7 +11,7 @@ class AppTextTheme {
         color: colorScheme.onSurface,
       ),
       headlineSmall: GoogleFonts.instrumentSans(
-                fontSize: 18.sp,
+        fontSize: 18.sp,
         fontWeight: FontWeight.w600,
         color: colorScheme.onSurface,
       ),

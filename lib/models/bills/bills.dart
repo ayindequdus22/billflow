@@ -1,5 +1,6 @@
 import 'package:billflow/theme/color_scheme.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 
 final AppColorScheme colorScheme = AppColorScheme();
@@ -95,6 +96,16 @@ class BillModel {
   final BillStatus status;
   static const int warningDays = 5;
 
+  static List<String> categories = [
+    "All Categories",
+    ...BillCategory.values.map(
+      (e) => e.displayName.toLowerCase().capitalizeFirst!,
+    ),
+  ];
+  static List<String> billStatus = [
+    "All Bills",
+    ...BillStatus.values.map((e) => e.displayName),
+  ];
   BillModel({
     String? id,
     required this.iconPath,
@@ -224,8 +235,8 @@ List<BillModel> bills = [
     category: BillCategory.utility,
     amount: 15000,
     frequency: BillFrequency.monthly,
-    dueDate: "2026-03-14T03:40:00.123Z",
-    status: BillStatus.overdue,
+    dueDate: "2026-03-20T03:40:00.123Z",
+    status: BillStatus.upcoming,
   ),
   BillModel(
     iconPath: "assets/images/internet.png",
@@ -233,8 +244,8 @@ List<BillModel> bills = [
     category: BillCategory.utility,
     amount: 15000,
     frequency: BillFrequency.monthly,
-    dueDate: "2026-03-04T03:40:00.123Z",
-    status: BillStatus.upcoming,
+    dueDate: "2026-03-24T03:40:00.123Z",
+    status: BillStatus.overdue,
   ),
   BillModel(
     iconPath: "assets/images/netflix.png",
@@ -242,7 +253,7 @@ List<BillModel> bills = [
     category: BillCategory.subscription,
     amount: 5000,
     frequency: BillFrequency.monthly,
-    dueDate: "2026-03-09T03:40:00.123Z",
+    dueDate: "2026-04-11T03:40:00.123Z",
     status: BillStatus.upcoming,
   ),
 
@@ -262,8 +273,8 @@ List<BillModel> bills = [
     category: BillCategory.subscription,
     amount: 1600,
     frequency: BillFrequency.monthly,
-    dueDate: "2026-03-02T03:40:00.123Z",
-    status: BillStatus.upcoming,
+    dueDate: "2026-03-08T03:40:00.123Z",
+    status: BillStatus.overdue,
   ),
 
   BillModel(
@@ -290,19 +301,10 @@ List<BillModel> bills = [
     category: BillCategory.savings,
     amount: 15000,
     frequency: BillFrequency.weekly,
-    dueDate: "2026-03-05T03:40:00.123Z",
+    dueDate: "2026-03-20T03:40:00.123Z",
     status: BillStatus.upcoming,
   ),
 
-  BillModel(
-    iconPath: "assets/images/electricity.png",
-    title: "Zonal",
-    category: BillCategory.utility,
-    amount: 15000,
-    frequency: BillFrequency.monthly,
-    dueDate: "2026-02-20T03:40:00.123Z",
-    status: BillStatus.upcoming,
-  ),
   BillModel(
     iconPath: "assets/images/electricity.png",
     title: "Zonal",

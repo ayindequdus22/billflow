@@ -112,6 +112,9 @@ class _VerifyEmailScreenState extends State<VerifyEmailScreen> {
             ),
             30.verticalSpace,
             ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                disabledBackgroundColor: themeContext.colorScheme.primary,
+              ),
               onPressed: isLoading ? null : () => verifyCode("123456"),
               child: isLoading
                   ? SizedBox(
