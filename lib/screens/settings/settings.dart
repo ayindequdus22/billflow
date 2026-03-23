@@ -44,125 +44,300 @@ class Settings extends StatelessWidget {
 
           ///
           ///
-          20.verticalSpace,
+          // 20.verticalSpace,
 
-          Container(
-            padding: EdgeInsets.all(16.h),
-            margin: EdgeInsets.symmetric(horizontal: 10.r),
-            decoration: BoxDecoration(
-              color: theme.colorScheme.surfaceBright,
-              border: Border.all(color: theme.colorScheme.outline, width: 1.h),
-              borderRadius: BorderRadius.circular(12.r),
-            ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Row(
-                  spacing: 10.w,
-                  children: [
-                    CircleAvatar(
-                      backgroundImage: AssetImage(
-                        "assets/images/profile_pic.png",
+          ///
+          Expanded(
+            child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  20.verticalSpace,
+                  Container(
+                    padding: EdgeInsets.all(16.h),
+                    margin: EdgeInsets.symmetric(horizontal: 10.r),
+                    decoration: BoxDecoration(
+                      color: theme.colorScheme.surfaceBright,
+                      border: Border.all(
+                        color: theme.colorScheme.outline,
+                        width: 1.h,
                       ),
-                      radius: 30.h,
+                      borderRadius: BorderRadius.circular(12.r),
                     ),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      spacing: 4.h,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        Text(
-                          "Blessing Garuba",
-                          style: theme.textTheme.bodyLarge!.copyWith(
-                            fontWeight: FontWeight.w500,
-                          ),
+                        Row(
+                          spacing: 10.w,
+                          children: [
+                            CircleAvatar(
+                              backgroundImage: AssetImage(
+                                "assets/images/profile_pic.png",
+                              ),
+                              radius: 30.h,
+                            ),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              spacing: 4.h,
+                              children: [
+                                Text(
+                                  "Blessing Garuba",
+                                  style: theme.textTheme.bodyLarge!.copyWith(
+                                    fontWeight: FontWeight.w500,
+                                  ),
+                                ),
+                                Text(
+                                  "blessinggaruba@gmail.com",
+                                  style: theme.textTheme.bodyMedium!.copyWith(
+                                    color: theme.colorScheme.surfaceContainer,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
                         ),
-                        Text(
-                          "blessinggaruba@gmail.com",
-                          style: theme.textTheme.bodyMedium!.copyWith(
-                            color: theme.colorScheme.surfaceContainer,
+                        IconButton(
+                          onPressed: () {},
+                          // padding: EdgeInsets.zero,
+                          icon: SvgPicture.asset(
+                            "assets/icons/edit.svg",
+                            height: 30.h,
+                            colorFilter: ColorFilter.mode(
+                              theme.colorScheme.onSurfaceVariant,
+                              BlendMode.srcIn,
+                            ),
                           ),
                         ),
                       ],
                     ),
-                  ],
-                ),
-                IconButton(
-                  onPressed: () {},
-                  // padding: EdgeInsets.zero,
-                  icon: SvgPicture.asset(
-                    "assets/icons/edit.svg",
-                    height: 30.h,
-                    colorFilter: ColorFilter.mode(
-                      theme.colorScheme.onSurfaceVariant,
-                      BlendMode.srcIn,
-                    ),
                   ),
-                ),
-              ],
-            ),
-          ),
 
-          ///
-          ///
-          20.verticalSpace,
+                  ///
+                  ///
+                  20.verticalSpace,
 
-          Container(
-            margin: EdgeInsets.symmetric(horizontal: 10.r),
-            child: Column(
-              spacing: 8.h,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  "Preferences",
-                  style: theme.textTheme.bodyLarge!.copyWith(
-                    fontWeight: FontWeight.w500,
-                  ),
-                ),
-                Container(
-                  decoration: BoxDecoration(
-                    color: theme.colorScheme.surfaceBright,
-                    border: Border.all(
-                      color: theme.colorScheme.outline,
-                      width: 1.h,
-                    ),
-                    borderRadius: BorderRadius.circular(12.r),
-                  ),
-                  child: Column(
-                    children: [
-                      Container(
-                        padding: EdgeInsets.all(16.h),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text("Dark Mode", style: theme.textTheme.bodyLarge),
-                            Switch(
-                              value: true,
-                              onChanged: (value) {},
-                              activeColor: theme.colorScheme.primary,
-                            ),
-                          ],
+                  Container(
+                    margin: EdgeInsets.symmetric(horizontal: 10.r),
+                    child: Column(
+                      spacing: 8.h,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          "Preferences",
+                          style: theme.textTheme.bodyLarge!.copyWith(
+                            fontWeight: FontWeight.w500,
+                          ),
                         ),
-                      ),
+                        Container(
+                          decoration: BoxDecoration(
+                            color: theme.colorScheme.surfaceBright,
+                            border: Border.all(
+                              color: theme.colorScheme.outline,
+                              width: 1.h,
+                            ),
+                            borderRadius: BorderRadius.circular(12.r),
+                          ),
+                          child: Column(
+                            children: [
+                              InkWell(
+                                child: Container(
+                                  padding: EdgeInsets.all(16.h),
+                                  child: buildButtonContent(
+                                    theme,
+                                    header: "Notifications",
+                                    body: "Manage when you receive reminders",
+                                    iconColor: Color.fromRGBO(199, 84, 84, 1),
+                                    iconPath: "assets/icons/notification.svg",
+                                    borderColor: Color.fromRGBO(
+                                      231,
+                                      185,
+                                      185,
+                                      1,
+                                    ),
+                                    containerColor: Color.fromRGBO(
+                                      247,
+                                      223,
+                                      223,
+                                      1,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              Divider(color: theme.colorScheme.outline),
 
-                      Divider(color: theme.colorScheme.outline),
-
-                      // InkWell(
-                      //   child: Container(
-                      //     padding: EdgeInsets.all(16.h),
-                      //     child: buildButtonContent(
-                      //       theme,
-                      //       header: "Notifications",
-                      //       body: "Manage when you receive reminders",
-                      //       iconColor: theme.colorScheme.primary,
-                      //       iconPath: "assets/icons/notification.svg",borderColor: ,containerColor: ,
-                      //     ),
-                      //   ),
-                      // ),
-                    ],
+                              InkWell(
+                                child: Container(
+                                  padding: EdgeInsets.all(16.h),
+                                  child: buildButtonContent(
+                                    theme,
+                                    header: "Categories",
+                                    body: "Customise bill categories",
+                                    iconColor: Color.fromRGBO(47, 127, 138, 1),
+                                    iconPath: "assets/icons/clipboard.svg",
+                                    borderColor: Color.fromRGBO(
+                                      181,
+                                      215,
+                                      219,
+                                      1,
+                                    ),
+                                    containerColor: Color.fromRGBO(
+                                      223,
+                                      240,
+                                      242,
+                                      1,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
-                ),
-              ],
+
+                  ///
+                  ///
+                  20.verticalSpace,
+                  Container(
+                    margin: EdgeInsets.symmetric(horizontal: 10.r),
+                    child: Column(
+                      spacing: 8.h,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          "Support",
+                          style: theme.textTheme.bodyLarge!.copyWith(
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                        Container(
+                          decoration: BoxDecoration(
+                            color: theme.colorScheme.surfaceBright,
+                            border: Border.all(
+                              color: theme.colorScheme.outline,
+                              width: 1.h,
+                            ),
+                            borderRadius: BorderRadius.circular(12.r),
+                          ),
+                          child: Column(
+                            children: [
+                              InkWell(
+                                child: Container(
+                                  padding: EdgeInsets.all(16.h),
+                                  child: buildButtonContent(
+                                    theme,
+                                    header: "Help & Support",
+                                    body: "Customise bill categories",
+                                    iconColor: Color.fromRGBO(106, 77, 160, 1),
+                                    iconPath: "assets/icons/notification.svg",
+                                    borderColor: Color.fromRGBO(
+                                      210,
+                                      190,
+                                      234,
+                                      1,
+                                    ),
+                                    containerColor: Color.fromRGBO(
+                                      238,
+                                      231,
+                                      248,
+                                      1,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              Divider(color: theme.colorScheme.outline),
+
+                              InkWell(
+                                child: Container(
+                                  padding: EdgeInsets.all(16.h),
+                                  child: buildButtonContent(
+                                    theme,
+                                    header: "Privacy Policies",
+                                    body: "Customise bill categories",
+                                    iconColor: Color.fromRGBO(74, 85, 104, 1),
+                                    iconPath: "assets/icons/clipboard.svg",
+                                    borderColor: Color.fromRGBO(
+                                      209,
+                                      215,
+                                      224,
+                                      1,
+                                    ),
+                                    containerColor: Color.fromRGBO(
+                                      237,
+                                      240,
+                                      245,
+                                      1,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+
+                  ///
+                  ///
+                  20.verticalSpace,
+
+                  Container(
+                    margin: EdgeInsets.symmetric(horizontal: 10.r),
+                    child: Column(
+                      spacing: 8.h,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          "About",
+                          style: theme.textTheme.bodyLarge!.copyWith(
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                        Container(
+                          decoration: BoxDecoration(
+                            color: theme.colorScheme.surfaceBright,
+                            border: Border.all(
+                              color: theme.colorScheme.outline,
+                              width: 1.h,
+                            ),
+                            borderRadius: BorderRadius.circular(12.r),
+                          ),
+                          child: Column(
+                            children: [
+                              InkWell(
+                                child: Container(
+                                  padding: EdgeInsets.all(16.h),
+                                  child: buildButtonContent(
+                                    theme,
+                                    header: "App Information",
+                                    body: "Version 1.0.0",
+                                    iconColor: Color.fromRGBO(26, 115, 232, 1),
+                                    iconPath: "assets/icons/notification.svg",
+                                    borderColor: Color.fromRGBO(
+                                      168,
+                                      200,
+                                      255,
+                                      1,
+                                    ),
+                                    containerColor: Color.fromRGBO(
+                                      232,
+                                      241,
+                                      255,
+                                      1,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
         ],
@@ -177,7 +352,7 @@ class Settings extends StatelessWidget {
     required String body,
     required String iconPath,
     required Color borderColor,
-    required Color containerColor
+    required Color containerColor,
   }) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -186,10 +361,15 @@ class Settings extends StatelessWidget {
           spacing: 12.w,
           children: [
             Container(
+              padding: EdgeInsets.all(10.h),
               decoration: BoxDecoration(
                 color: containerColor,
-                border:Border.all(color: borderColor, width: 1.h) ,borderRadius: BorderRadius.circular(8.r)),
+                border: Border.all(color: borderColor, width: 1.h),
+                borderRadius: BorderRadius.circular(8.r),
+              ),
               child: SvgPicture.asset(
+                width: 20.h,
+                height: 20.h,
                 iconPath,
                 colorFilter: ColorFilter.mode(iconColor, BlendMode.srcIn),
               ),

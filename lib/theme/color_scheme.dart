@@ -14,10 +14,6 @@ class AppColorScheme {
   final Color dangerLight = Color.fromRGBO(254, 226, 226, 1);
   final Color danger = Color.fromRGBO(220, 38, 38, 1);
   final Color dangerBorder = Color.fromRGBO(252, 165, 165, 1);
-///
-  final Color notificationBorder = Color.fromRGBO(231,185,185,1);
-  final Color notification = Color.fromRGBO(255, 0, 0, 1);
-  final Color notificationLight = Color.fromRGBO(255, 243, 243, 1);
 
   final Color warning = Color.fromRGBO(245, 158, 11, 1);
   final Color warningBorder = Color.fromRGBO(253, 230, 138, 1);
