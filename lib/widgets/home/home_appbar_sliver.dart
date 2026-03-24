@@ -44,7 +44,7 @@ class HomeSliverAppBarDelegate extends SliverPersistentHeaderDelegate {
                 Align(
                   alignment: Alignment.centerLeft,
                   child: Text(
-                    "Hello Anteqs,",
+                    "Hello Blessing,",
                     style: theme.textTheme.headlineLarge?.copyWith(
                       color: Colors.white,
                     ),

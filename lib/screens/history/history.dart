@@ -1,6 +1,5 @@
 import 'package:billflow/models/bills/bills.dart';
 import 'package:billflow/widgets/build_category_btn.dart';
-import 'package:billflow/widgets/select.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -48,21 +47,6 @@ class HistoryAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final List<String> months = [
-      "all months",
-      "jan",
-      "feb",
-      "mar",
-      "apr",
-      "may",
-      "jun",
-      "jul",
-      "aug",
-      "sep",
-      "oct",
-      "nov",
-      "dec",
-    ];
     return Container(
       //
       width: double.infinity,
@@ -84,7 +68,6 @@ class HistoryAppBar extends StatelessWidget {
                 Text(
                   "Track your past payments",
                   style: theme.textTheme.bodyMedium!.copyWith(
-                    fontWeight: FontWeight.w500,
                     color: theme.colorScheme.surfaceContainer,
                   ),
                 ),
@@ -94,9 +77,7 @@ class HistoryAppBar extends StatelessWidget {
               children: [
                 Text(
                   "Filter By Month",
-                  style: theme.textTheme.bodyMedium?.copyWith(
-                    fontWeight: FontWeight.w500,
-                  ),
+                  style: theme.textTheme.bodyMedium,
                 ),
               ],
             ),

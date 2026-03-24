@@ -1,3 +1,4 @@
+import 'package:billflow/insight/Insight.dart';
 import 'package:billflow/screens/bills/bill.dart';
 import 'package:billflow/screens/history/history.dart';
 import 'package:billflow/screens/settings/Settings.dart';
@@ -14,8 +15,14 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  final _screens = <Widget>[HomeSliver(), BillScreen(), History(), Settings()];
-  int _selectedIndex = 0;
+  final _screens = <Widget>[
+    HomeSliver(),
+    BillScreen(),
+    Insights(),
+    History(),
+    Settings(),
+  ];
+  int _selectedIndex = 3;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,8 +35,10 @@ class _HomeScreenState extends State<HomeScreen> {
           children: [
             buildBottomIcon("Home", "assets/icons/home.svg", index: 0),
             buildBottomIcon("Bills", "assets/icons/bill.svg", index: 1),
-            buildBottomIcon("History", "assets/icons/history.svg", index: 2),
-            buildBottomIcon("Settings", "assets/icons/setting.svg", index: 3),
+            buildBottomIcon("Insights", "assets/icons/insight.svg", index: 2),
+
+            buildBottomIcon("History", "assets/icons/history.svg", index: 3),
+            buildBottomIcon("Settings", "assets/icons/setting.svg", index: 4),
           ],
         ),
       ),
