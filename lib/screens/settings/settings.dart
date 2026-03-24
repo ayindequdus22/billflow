@@ -1,3 +1,6 @@
+import 'package:billflow/widgets/settings/app_bar.dart';
+import 'package:billflow/widgets/settings/build_button_content.dart';
+import 'package:billflow/widgets/settings/logout_btn.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -11,45 +14,12 @@ class Settings extends StatelessWidget {
     return Scaffold(
       body: Column(
         children: [
-          Container(
-            //
-            width: double.infinity,
-            padding: EdgeInsets.symmetric(horizontal: 10.r, vertical: 10.r),
-            decoration: BoxDecoration(
-              color: theme.colorScheme.surfaceBright,
-              border: Border.all(color: theme.colorScheme.outline, width: 1.h),
-            ),
-            child: SafeArea(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-
-                children: [
-                  Column(
-                    spacing: 4.h,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text("Settings", style: theme.textTheme.headlineLarge),
-                      Text(
-                        "Manage your preferences",
-                        style: theme.textTheme.bodyMedium!.copyWith(
-                          color: theme.colorScheme.surfaceContainer,
-                        ),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-            ),
-          ),
-
-          ///
-          ///
-          // 20.verticalSpace,
-
-          ///
+          appBar(theme),
           Expanded(
             child: SingleChildScrollView(
+              physics: BouncingScrollPhysics(),
               child: Column(
+                spacing: 15.h,
                 children: [
                   20.verticalSpace,
                   Container(
@@ -98,7 +68,6 @@ class Settings extends StatelessWidget {
                         ),
                         IconButton(
                           onPressed: () {},
-                          // padding: EdgeInsets.zero,
                           icon: SvgPicture.asset(
                             "assets/icons/edit.svg",
                             height: 30.h,
@@ -111,10 +80,6 @@ class Settings extends StatelessWidget {
                       ],
                     ),
                   ),
-
-                  ///
-                  ///
-                  20.verticalSpace,
 
                   Container(
                     margin: EdgeInsets.symmetric(horizontal: 10.r),
@@ -196,9 +161,6 @@ class Settings extends StatelessWidget {
                     ),
                   ),
 
-                  ///
-                  ///
-                  20.verticalSpace,
                   Container(
                     margin: EdgeInsets.symmetric(horizontal: 10.r),
                     child: Column(
@@ -230,7 +192,7 @@ class Settings extends StatelessWidget {
                                     header: "Help & Support",
                                     body: "Customise bill categories",
                                     iconColor: Color.fromRGBO(106, 77, 160, 1),
-                                    iconPath: "assets/icons/notification.svg",
+                                    iconPath: "assets/icons/help.svg",
                                     borderColor: Color.fromRGBO(
                                       210,
                                       190,
@@ -256,7 +218,7 @@ class Settings extends StatelessWidget {
                                     header: "Privacy Policies",
                                     body: "Customise bill categories",
                                     iconColor: Color.fromRGBO(74, 85, 104, 1),
-                                    iconPath: "assets/icons/clipboard.svg",
+                                    iconPath: "assets/icons/shield.svg",
                                     borderColor: Color.fromRGBO(
                                       209,
                                       215,
@@ -278,11 +240,6 @@ class Settings extends StatelessWidget {
                       ],
                     ),
                   ),
-
-                  ///
-                  ///
-                  20.verticalSpace,
-
                   Container(
                     margin: EdgeInsets.symmetric(horizontal: 10.r),
                     child: Column(
@@ -314,7 +271,7 @@ class Settings extends StatelessWidget {
                                     header: "App Information",
                                     body: "Version 1.0.0",
                                     iconColor: Color.fromRGBO(26, 115, 232, 1),
-                                    iconPath: "assets/icons/notification.svg",
+                                    iconPath: "assets/icons/info.svg",
                                     borderColor: Color.fromRGBO(
                                       168,
                                       200,
@@ -336,67 +293,16 @@ class Settings extends StatelessWidget {
                       ],
                     ),
                   ),
+
+                  logoutBtn(context),
+
+                  10.verticalSpace,
                 ],
               ),
             ),
           ),
         ],
       ),
-    );
-  }
-
-  Row buildButtonContent(
-    ThemeData theme, {
-    required Color iconColor,
-    required String header,
-    required String body,
-    required String iconPath,
-    required Color borderColor,
-    required Color containerColor,
-  }) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Row(
-          spacing: 12.w,
-          children: [
-            Container(
-              padding: EdgeInsets.all(10.h),
-              decoration: BoxDecoration(
-                color: containerColor,
-                border: Border.all(color: borderColor, width: 1.h),
-                borderRadius: BorderRadius.circular(8.r),
-              ),
-              child: SvgPicture.asset(
-                width: 20.h,
-                height: 20.h,
-                iconPath,
-                colorFilter: ColorFilter.mode(iconColor, BlendMode.srcIn),
-              ),
-            ),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              spacing: 4.h,
-              children: [
-                Text(header, style: theme.textTheme.bodyMedium),
-                Text(
-                  body,
-                  style: theme.textTheme.bodySmall!.copyWith(
-                    color: theme.colorScheme.surfaceContainer,
-                  ),
-                ),
-              ],
-            ),
-          ],
-        ),
-        SvgPicture.asset(
-          "assets/icons/arrow-right.svg",
-          colorFilter: ColorFilter.mode(
-            theme.colorScheme.onSurfaceVariant,
-            BlendMode.srcIn,
-          ),
-        ),
-      ],
     );
   }
 }
