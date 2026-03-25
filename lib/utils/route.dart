@@ -7,25 +7,32 @@ import 'package:billflow/screens/bill_details/bill_details.dart';
 import 'package:billflow/screens/home/home.dart';
 import 'package:billflow/screens/onboarding.dart';
 import 'package:billflow/screens/set-up/start_setup.dart';
+import 'package:billflow/screens/settings/categories/categories.dart';
+import 'package:billflow/screens/settings/notifications/notifications.dart';
 import 'package:billflow/screens/splash.dart';
 import 'package:get/get.dart';
 
 class AppRoutes {
+  //root
   static const splash = "/";
   static const onboarding = "/onboarding";
-
+  // auth
   static const login = "/auth/login";
   static const register = "/auth/register";
-
   static const verifyMail = "/auth/verify-mail";
   static const verifyMailSuccess = "/auth/verify-mail/success";
 
   static const home = "/home";
 
   static const setup = "/setup";
+  //bills
   static const addBill = "/add-bill";
-
   static const billDetails = "/bill-details/:id";
+  //settings
+  static const categories = "/settings/categories";
+  static const notification = "/settings/notifications";
+  static const privacy = "/settings/privacy";
+  static const help = "/settings/help";
 }
 
 class AppPages {
@@ -48,5 +55,7 @@ class AppPages {
     GetPage(name: AppRoutes.addBill, page: () => const AddBill()),
 
     GetPage(name: AppRoutes.billDetails, page: () => BillDetails()),
+    GetPage(name: AppRoutes.categories, page: () => Categories()),
+    GetPage(name: AppRoutes.notification, page: () => Notifications()),
   ];
 }

@@ -1,9 +1,11 @@
+import 'package:billflow/utils/route.dart';
 import 'package:billflow/widgets/settings/app_bar.dart';
 import 'package:billflow/widgets/settings/build_button_content.dart';
 import 'package:billflow/widgets/settings/logout_btn.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
 
 class Settings extends StatelessWidget {
   const Settings({super.key});
@@ -105,6 +107,8 @@ class Settings extends StatelessWidget {
                           child: Column(
                             children: [
                               InkWell(
+                                onTap: () =>
+                                    Get.toNamed(AppRoutes.notification),
                                 child: Container(
                                   padding: EdgeInsets.all(16.h),
                                   child: buildButtonContent(
@@ -131,6 +135,8 @@ class Settings extends StatelessWidget {
                               Divider(color: theme.colorScheme.outline),
 
                               InkWell(
+                                onTap: () =>
+                                    Get.toNamed(AppRoutes.notification),
                                 child: Container(
                                   padding: EdgeInsets.all(16.h),
                                   child: buildButtonContent(
@@ -185,6 +191,7 @@ class Settings extends StatelessWidget {
                           child: Column(
                             children: [
                               InkWell(
+                                onTap: () => Get.toNamed(AppRoutes.help),
                                 child: Container(
                                   padding: EdgeInsets.all(16.h),
                                   child: buildButtonContent(
@@ -211,6 +218,7 @@ class Settings extends StatelessWidget {
                               Divider(color: theme.colorScheme.outline),
 
                               InkWell(
+                                onTap: () => Get.toNamed(AppRoutes.privacy),
                                 child: Container(
                                   padding: EdgeInsets.all(16.h),
                                   child: buildButtonContent(

@@ -1,3 +1,4 @@
+import 'package:billflow/utils/route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
@@ -166,7 +167,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                 ),
                 TextButton(
-                  onPressed: () => Get.toNamed("/auth/register"),
+                  onPressed: () => Get.toNamed(AppRoutes.register),
                   child: Text(
                     "Sign Up",
                     style: themeContext.textTheme.bodyLarge?.copyWith(

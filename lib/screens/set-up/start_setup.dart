@@ -1,3 +1,4 @@
+import 'package:billflow/utils/route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
@@ -54,7 +55,7 @@ class StartSetup extends StatelessWidget {
             Spacer(),
             ElevatedButton(
               onPressed: () {
-                Get.toNamed("/add-bill");
+                Get.toNamed(AppRoutes.addBill);
                 // Navigate to the next setup step
               },
               style: ElevatedButton.styleFrom(
