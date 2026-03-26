@@ -42,26 +42,5 @@ class CategoryItems {
       iconPath: 'assets/images/loan.png',
       color: appColors.loanLight,
     ),
-
-    CategoryItems(
-      name: 'Subscription',
-      iconPath: 'assets/images/netflix.png',
-      color: appColors.subscriptionLight,
-    ),
-    CategoryItems(
-      name: 'Insurance',
-      iconPath: 'assets/images/insurance.png',
-      color: appColors.insuranceLight,
-    ),
-    CategoryItems(
-      name: 'Savings',
-      iconPath: 'assets/images/piggyvest.png',
-      color: appColors.savingsLight,
-    ),
-    CategoryItems(
-      name: 'Loan',
-      iconPath: 'assets/images/loan.png',
-      color: appColors.loanLight,
-    ),
   ];
 }
