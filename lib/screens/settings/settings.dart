@@ -135,8 +135,7 @@ class Settings extends StatelessWidget {
                               Divider(color: theme.colorScheme.outline),
 
                               InkWell(
-                                onTap: () =>
-                                    Get.toNamed(AppRoutes.notification),
+                                onTap: () => Get.toNamed(AppRoutes.categories),
                                 child: Container(
                                   padding: EdgeInsets.all(16.h),
                                   child: buildButtonContent(

@@ -22,7 +22,7 @@ class _HomeScreenState extends State<HomeScreen> {
     History(),
     Settings(),
   ];
-  int _selectedIndex = 3;
+  int _selectedIndex = 4;
   @override
   Widget build(BuildContext context) {
     return Scaffold(

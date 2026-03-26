@@ -8,7 +8,9 @@ import 'package:billflow/screens/home/home.dart';
 import 'package:billflow/screens/onboarding.dart';
 import 'package:billflow/screens/set-up/start_setup.dart';
 import 'package:billflow/screens/settings/categories/categories.dart';
+import 'package:billflow/screens/settings/help/help.dart';
 import 'package:billflow/screens/settings/notifications/notifications.dart';
+import 'package:billflow/screens/settings/privacy/privacy.dart';
 import 'package:billflow/screens/splash.dart';
 import 'package:get/get.dart';
 
@@ -55,6 +57,9 @@ class AppPages {
     GetPage(name: AppRoutes.addBill, page: () => const AddBill()),
 
     GetPage(name: AppRoutes.billDetails, page: () => BillDetails()),
+    //settings
+    GetPage(name: AppRoutes.help, page: () => Help()),
+    GetPage(name: AppRoutes.privacy, page: () => Privacy()),
     GetPage(name: AppRoutes.categories, page: () => Categories()),
     GetPage(name: AppRoutes.notification, page: () => Notifications()),
   ];
