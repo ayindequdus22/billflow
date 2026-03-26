@@ -1,5 +1,3 @@
-
-
 import 'package:billflow/models/bills/bills.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -94,7 +92,9 @@ class BillDetailAppBar extends StatelessWidget {
                   Text(
                     "Amount",
                     style: theme.textTheme.bodyLarge!.copyWith(
-                      color: Color.fromRGBO(232, 241, 255, 1),
+                      color: theme.colorScheme.primaryFixed,
+
+                      ///
                       fontWeight: FontWeight.w500,
                     ),
                   ),

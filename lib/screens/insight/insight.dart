@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class Insights extends StatelessWidget {
-  const Insights({super.key});
+class Insight extends StatelessWidget {
+  const Insight({super.key});
 
   @override
  Widget build(BuildContext context) {

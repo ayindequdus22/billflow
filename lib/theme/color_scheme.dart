@@ -34,6 +34,8 @@ class AppColorScheme {
   final Color insuranceLight = Color.fromRGBO(226, 232, 240, 1);
   final Color insurance = Color.fromRGBO(71, 85, 105, 1);
 
+final Color loanLight= Color.fromRGBO(252,231,243,1);
+
   static final Color _primary = Color.fromRGBO(26, 115, 232, 1);
 
   static final Color _primaryVariant = Color.fromRGBO(232, 241, 255, 1);
