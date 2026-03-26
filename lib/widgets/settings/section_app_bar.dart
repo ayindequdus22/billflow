@@ -3,8 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 
-class SettingsSectionAppBar extends StatelessWidget
-    implements PreferredSizeWidget {
+class SettingsSectionAppBar extends StatelessWidget {
   final String title;
 
   const SettingsSectionAppBar({super.key, required this.title});
@@ -13,29 +12,34 @@ class SettingsSectionAppBar extends StatelessWidget
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
 
-    return AppBar(
-      centerTitle: true,
-      elevation: 0,
-      toolbarHeight: 60.h,
-      shape: Border(
-        bottom: BorderSide(color: theme.colorScheme.outline, width: 1),
-      ),
-      leading: IconButton(
-        onPressed: () => Get.back(),
-        icon: SvgPicture.asset(
-          "assets/icons/back-arrow.svg",
-          colorFilter: ColorFilter.mode(
-            theme.colorScheme.onSurfaceVariant,
-            BlendMode.srcIn,
-          ),
-          height: 30.h,
+    return Container(
+      padding: EdgeInsets.symmetric(horizontal: 10.r, vertical: 5.r),
+      decoration: BoxDecoration(
+        border: Border(
+          bottom: BorderSide(color: theme.colorScheme.outline, width: 1),
         ),
       ),
-      title: Text(title, style: theme.textTheme.titleLarge),
-      titleSpacing: 0,
+      child: SafeArea(
+        bottom: false,
+        child: Row(
+          spacing: 16.w,
+          children: [
+            IconButton(
+              onPressed: () => Get.back(),
+              icon: SvgPicture.asset(
+                "assets/icons/back-arrow.svg",
+                colorFilter: ColorFilter.mode(
+                  theme.colorScheme.onSurfaceVariant,
+                  BlendMode.srcIn,
+                ),
+                height: 30.h,
+              ),
+            ),
+
+            Text(title, style: theme.textTheme.titleLarge),
+          ],
+        ),
+      ),
     );
   }
-
-  @override
-  Size get preferredSize => Size.fromHeight(60.h);
 }

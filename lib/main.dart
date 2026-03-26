@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
           useInheritedMediaQuery: true,
           theme: AppTheme.lightMode(context),
           darkTheme: AppTheme.darkMode(context),
-          initialRoute:AppRoutes.notification,
+          initialRoute: AppRoutes.categories,
           getPages: AppPages.routes,
         );
       },

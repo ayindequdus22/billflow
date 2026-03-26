@@ -10,10 +10,9 @@ class Notifications extends StatelessWidget {
   Widget build(BuildContext context) {
     final themeContext = Theme.of(context);
     return Scaffold(
-      appBar: SettingsSectionAppBar(title: "Notifications"),
       body: Column(
         spacing: 10.h,
-        children: [
+        children: [ SettingsSectionAppBar(title: "Notifications"),
           10.verticalSpace,
           Container(
             margin: EdgeInsets.symmetric(horizontal: 10.r),

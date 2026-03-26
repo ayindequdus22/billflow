@@ -1,6 +1,6 @@
-import 'package:billflow/insight/Insight.dart';
 import 'package:billflow/screens/bills/bill.dart';
 import 'package:billflow/screens/history/history.dart';
+import 'package:billflow/screens/insight/insight.dart';
 import 'package:billflow/screens/settings/Settings.dart';
 import 'package:billflow/widgets/home/home_sliver.dart';
 import 'package:flutter/material.dart';
@@ -18,7 +18,7 @@ class _HomeScreenState extends State<HomeScreen> {
   final _screens = <Widget>[
     HomeSliver(),
     BillScreen(),
-    Insights(),
+    Insight(),
     History(),
     Settings(),
   ];
