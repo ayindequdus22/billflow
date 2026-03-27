@@ -56,7 +56,7 @@ class _VerifyEmailScreenState extends State<VerifyEmailScreen> {
                     borderRadius: BorderRadius.circular(30.r),
                   ),
                   child: SvgPicture.asset(
-                    "assets/icons/mail-01.svg",
+                    "assets/icons/mail1.svg",
                     colorFilter: ColorFilter.mode(
                       themeContext.colorScheme.primary,
                       BlendMode.srcIn,

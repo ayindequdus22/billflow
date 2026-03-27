@@ -128,7 +128,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           prefixIcon: Padding(
                             padding: EdgeInsets.only(left: 12.w, right: 1.w),
                             child: SvgPicture.asset(
-                              "assets/icons/mail-01.svg",
+                              "assets/icons/mail1.svg",
                               height: 20.h,
                               width: 20.h,
                               colorFilter: ColorFilter.mode(
