@@ -3,12 +3,34 @@ import 'package:billflow/widgets/settings/section_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+final List<Map<String, String>> faqs = [
+  {
+    "heading": "How do I add a new bill?",
+    "body":
+        "Tap the + button on the bottom right of the dashboard or bills screen",
+  },
+  {
+    "heading": "How do I set up reminders?",
+    "body":
+        "Go to the Settings > Notifications to customize your reminder preferences",
+  },
+  {
+    "heading": "Can I edit a bill after creating it?",
+    "body": "Yes, tap on any bill to view details and make changes",
+  },
+  {
+    "heading": "How do I mark a bill as paid?",
+    "body": "Open the bill details and tap the \"Mark as paid\" button",
+  },
+];
+
 class Help extends StatelessWidget {
   const Help({super.key});
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+
     return Scaffold(
       body: Column(
         children: [
@@ -23,7 +45,6 @@ class Help extends StatelessWidget {
 
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
-
                     spacing: 8.h,
                     children: [
                       Text(
@@ -112,16 +133,22 @@ class Help extends StatelessWidget {
                     ],
                   ),
 
-                  10.verticalSpace,
+                  20.verticalSpace,
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
+                    spacing: 8.h,
+
                     children: [
                       Text(
                         "Frequently Asked Questions",
                         style: theme.textTheme.bodyMedium,
+                        textAlign: TextAlign.start,
                       ),
+                      ...faqs.map((question) => _buildFAQItem(question, theme)),
                     ],
                   ),
+
+                  20.verticalSpace,
                 ],
               ),
             ),
@@ -130,4 +157,31 @@ class Help extends StatelessWidget {
       ),
     );
   }
+}
+
+Widget _buildFAQItem(Map<String, String> question, ThemeData theme) {
+  return Container(
+    margin: EdgeInsets.only(bottom: 8.h),
+    decoration: BoxDecoration(
+      color: theme.colorScheme.surfaceBright,
+      borderRadius: BorderRadius.circular(12),
+      border: Border.all(color: theme.colorScheme.outline),
+    ),
+    child: ExpansionTile(
+      tilePadding: EdgeInsets.symmetric(horizontal: 16.h),
+      childrenPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+      title: Text(question['heading']!, style: theme.textTheme.bodyMedium),
+      iconColor: theme.colorScheme.onSurfaceVariant,
+      collapsedIconColor: theme.colorScheme.onSurfaceVariant,
+
+      children: [
+        Text(
+          question['body']!,
+          style: theme.textTheme.bodySmall!.copyWith(
+            color: theme.colorScheme.surfaceContainer,
+          ),
+        ),
+      ],
+    ),
+  );
 }
